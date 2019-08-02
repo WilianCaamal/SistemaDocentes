@@ -67,6 +67,7 @@ Partial Class FrmDocente
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,6 +77,7 @@ Partial Class FrmDocente
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.PictureBox1)
         Me.GroupBox1.Controls.Add(Me.TxtEmail)
@@ -317,7 +319,7 @@ Partial Class FrmDocente
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(575, 16)
+        Me.Label13.Location = New System.Drawing.Point(578, 16)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(56, 13)
         Me.Label13.TabIndex = 23
@@ -490,7 +492,7 @@ Partial Class FrmDocente
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(550, 37)
+        Me.PictureBox1.Location = New System.Drawing.Point(556, 62)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -508,6 +510,15 @@ Partial Class FrmDocente
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Docente"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(571, 32)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 24
+        Me.Button1.Text = "Examinar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmDocente
         '
@@ -580,4 +591,5 @@ Partial Class FrmDocente
     Friend WithEvents Label15 As Label
     Friend WithEvents TxtPlaza As TextBox
     Friend WithEvents Label14 As Label
+    Friend WithEvents Button1 As Button
 End Class
