@@ -188,5 +188,15 @@
   <ItemGroup>
     <None Include="Resources\employee_card_48px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocios\CapaNegocios.vbproj">
+      <Project>{d1c86934-6a68-40a5-af9f-00531749ea20}</Project>
+      <Name>CapaNegocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.vbproj">
+      <Project>{c95dbc07-9fce-434b-8e7c-edbd14632bc0}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
