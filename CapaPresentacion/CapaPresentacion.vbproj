@@ -76,6 +76,12 @@
     <Compile Include="Catalogos\FrmDocente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Catalogos\FrmFormacion.Designer.vb">
+      <DependentUpon>FrmFormacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\FrmFormacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPrincipal.Designer.vb">
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </Compile>
@@ -111,6 +117,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Catalogos\FrmDocente.resx">
       <DependentUpon>FrmDocente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\FrmFormacion.resx">
+      <DependentUpon>FrmFormacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
@@ -169,6 +178,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edit_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin_settings_male_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract_job_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee_card_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
