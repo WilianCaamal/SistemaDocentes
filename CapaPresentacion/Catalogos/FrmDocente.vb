@@ -1,4 +1,6 @@
-﻿Public Class FrmDocente
+﻿Imports Entidades
+
+Public Class FrmDocente
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
         Close()
     End Sub
@@ -39,6 +41,29 @@
 
     Private Sub ValidarCampos(form As Form)
 
+    End Sub
+
+    Private Sub Docente()
+        Dim objDocente As New Docente With {
+            .Nombres = TxtNombres.Text.Trim,
+            .Apellidos = TxtApellidos.Text.Trim,
+            .Genero = CboGenero.Text.Trim,
+            .FechaNacimiento = DtFechaNacimiento.Value,
+            .Curp = TxtCurp.Text.Trim,
+            .Direccion = TxtDireccion.Text.Trim,
+            .IdEstado = CboEstado.ValueMember,
+            .IdCiudad = CboCiudad.ValueMember,
+            .Cp = TxtCp.Text.Trim,
+            .Telefono = TxtTelefono.Text.Trim,
+            .Email = TxtEmail.Text.Trim,
+            .Plaza = TxtPlaza.Text.Trim,
+            .FechaIngreso = DtFechaIngreso.Value,
+            .Perfil = TxtPerfil.Text.Trim,
+            .Postgrado = TxtPostgrado.Text.Trim,
+            .Area = CboArea.Text.Trim,
+            .Grado = CboGrado.Text.Trim,
+            .Idiomas = TxtIdiomas.Text.Trim
+        }
     End Sub
 
 End Class
