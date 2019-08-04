@@ -56,10 +56,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("""User=SYSDBA;Password=masterkey;Database=C:\\Users\\wilia\\Documents\\Visual Stud"& _ 
-            "io 2017\\Projects\\SISTEMADOCENTES2.FDB;DataSource=localhost;Port=3050;Dialect=3"& _ 
-            ";Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSiz"& _ 
-            "e=50;Packet Size=8192;ServerType=0""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("User=SYSDBA;Password=masterkey;Database=C:\\Users\\wilia\\Documents\\Visual Studi"& _ 
+            "o 2017\\Projects\\SISTEMADOCENTES2.FDB;DataSource=localhost;Port=3050;Dialect=3;"& _ 
+            "Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize"& _ 
+            "=50;Packet Size=8192;ServerType=0")>  _
         Public Property cadenaConexion() As String
             Get
                 Return CType(Me("cadenaConexion"),String)

@@ -23,54 +23,54 @@ Partial Class FrmDocente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.TxtNombres = New System.Windows.Forms.TextBox()
-        Me.TxtApellidos = New System.Windows.Forms.TextBox()
-        Me.CboGenero = New System.Windows.Forms.ComboBox()
-        Me.DtFechaNacimiento = New System.Windows.Forms.DateTimePicker()
-        Me.TxtCurp = New System.Windows.Forms.TextBox()
-        Me.TxtDireccion = New System.Windows.Forms.TextBox()
-        Me.CboCiudad = New System.Windows.Forms.ComboBox()
-        Me.CboEstado = New System.Windows.Forms.ComboBox()
-        Me.TxtCp = New System.Windows.Forms.TextBox()
-        Me.TxtTelefono = New System.Windows.Forms.TextBox()
-        Me.TxtEmail = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.TxtPlaza = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TxtPerfil = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.TxtPostgrado = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.CboArea = New System.Windows.Forms.ComboBox()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TxtEmail = New System.Windows.Forms.TextBox()
+        Me.TxtTelefono = New System.Windows.Forms.TextBox()
+        Me.TxtCp = New System.Windows.Forms.TextBox()
+        Me.CboEstado = New System.Windows.Forms.ComboBox()
+        Me.CboCiudad = New System.Windows.Forms.ComboBox()
+        Me.TxtDireccion = New System.Windows.Forms.TextBox()
+        Me.TxtCurp = New System.Windows.Forms.TextBox()
+        Me.DtFechaNacimiento = New System.Windows.Forms.DateTimePicker()
+        Me.CboGenero = New System.Windows.Forms.ComboBox()
+        Me.TxtApellidos = New System.Windows.Forms.TextBox()
+        Me.TxtNombres = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TxtIdiomas = New System.Windows.Forms.TextBox()
+        Me.DtFechaIngreso = New System.Windows.Forms.DateTimePicker()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.CboGrado = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.DtFechaIngreso = New System.Windows.Forms.DateTimePicker()
-        Me.TxtIdiomas = New System.Windows.Forms.TextBox()
+        Me.CboArea = New System.Windows.Forms.ComboBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TxtPostgrado = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.TxtPerfil = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TxtPlaza = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -109,6 +109,221 @@ Partial Class FrmDocente
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos personales"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(571, 32)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 24
+        Me.Button1.Text = "Examinar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(578, 16)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(56, 13)
+        Me.Label13.TabIndex = 23
+        Me.Label13.Text = "Fotografía"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(556, 62)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 22
+        Me.PictureBox1.TabStop = False
+        '
+        'TxtEmail
+        '
+        Me.TxtEmail.Location = New System.Drawing.Point(328, 130)
+        Me.TxtEmail.Name = "TxtEmail"
+        Me.TxtEmail.Size = New System.Drawing.Size(200, 20)
+        Me.TxtEmail.TabIndex = 21
+        '
+        'TxtTelefono
+        '
+        Me.TxtTelefono.Location = New System.Drawing.Point(328, 104)
+        Me.TxtTelefono.Name = "TxtTelefono"
+        Me.TxtTelefono.Size = New System.Drawing.Size(200, 20)
+        Me.TxtTelefono.TabIndex = 20
+        '
+        'TxtCp
+        '
+        Me.TxtCp.Location = New System.Drawing.Point(328, 78)
+        Me.TxtCp.MaxLength = 5
+        Me.TxtCp.Name = "TxtCp"
+        Me.TxtCp.Size = New System.Drawing.Size(200, 20)
+        Me.TxtCp.TabIndex = 19
+        '
+        'CboEstado
+        '
+        Me.CboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboEstado.FormattingEnabled = True
+        Me.CboEstado.Location = New System.Drawing.Point(328, 24)
+        Me.CboEstado.Name = "CboEstado"
+        Me.CboEstado.Size = New System.Drawing.Size(200, 21)
+        Me.CboEstado.TabIndex = 17
+        '
+        'CboCiudad
+        '
+        Me.CboCiudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboCiudad.FormattingEnabled = True
+        Me.CboCiudad.Location = New System.Drawing.Point(328, 51)
+        Me.CboCiudad.Name = "CboCiudad"
+        Me.CboCiudad.Size = New System.Drawing.Size(200, 21)
+        Me.CboCiudad.TabIndex = 18
+        '
+        'TxtDireccion
+        '
+        Me.TxtDireccion.Location = New System.Drawing.Point(64, 104)
+        Me.TxtDireccion.Name = "TxtDireccion"
+        Me.TxtDireccion.Size = New System.Drawing.Size(200, 20)
+        Me.TxtDireccion.TabIndex = 14
+        '
+        'TxtCurp
+        '
+        Me.TxtCurp.Location = New System.Drawing.Point(64, 156)
+        Me.TxtCurp.MaxLength = 18
+        Me.TxtCurp.Name = "TxtCurp"
+        Me.TxtCurp.Size = New System.Drawing.Size(200, 20)
+        Me.TxtCurp.TabIndex = 16
+        '
+        'DtFechaNacimiento
+        '
+        Me.DtFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtFechaNacimiento.Location = New System.Drawing.Point(120, 130)
+        Me.DtFechaNacimiento.MaxDate = New Date(2019, 12, 31, 0, 0, 0, 0)
+        Me.DtFechaNacimiento.MinDate = New Date(1940, 1, 1, 0, 0, 0, 0)
+        Me.DtFechaNacimiento.Name = "DtFechaNacimiento"
+        Me.DtFechaNacimiento.Size = New System.Drawing.Size(144, 20)
+        Me.DtFechaNacimiento.TabIndex = 15
+        '
+        'CboGenero
+        '
+        Me.CboGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CboGenero.FormattingEnabled = True
+        Me.CboGenero.Items.AddRange(New Object() {"Hombre", "Mujer"})
+        Me.CboGenero.Location = New System.Drawing.Point(64, 78)
+        Me.CboGenero.Name = "CboGenero"
+        Me.CboGenero.Size = New System.Drawing.Size(200, 21)
+        Me.CboGenero.TabIndex = 13
+        '
+        'TxtApellidos
+        '
+        Me.TxtApellidos.Location = New System.Drawing.Point(64, 52)
+        Me.TxtApellidos.Name = "TxtApellidos"
+        Me.TxtApellidos.Size = New System.Drawing.Size(200, 20)
+        Me.TxtApellidos.TabIndex = 12
+        '
+        'TxtNombres
+        '
+        Me.TxtNombres.Location = New System.Drawing.Point(64, 23)
+        Me.TxtNombres.Name = "TxtNombres"
+        Me.TxtNombres.Size = New System.Drawing.Size(200, 20)
+        Me.TxtNombres.TabIndex = 11
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(270, 134)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(38, 13)
+        Me.Label12.TabIndex = 10
+        Me.Label12.Text = "E-mail:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(270, 107)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(52, 13)
+        Me.Label11.TabIndex = 9
+        Me.Label11.Text = "Teléfono:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(270, 81)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(24, 13)
+        Me.Label10.TabIndex = 8
+        Me.Label10.Text = "CP:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(270, 28)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(43, 13)
+        Me.Label9.TabIndex = 7
+        Me.Label9.Text = "Estado:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(270, 55)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(43, 13)
+        Me.Label8.TabIndex = 6
+        Me.Label8.Text = "Ciudad:"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 107)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(55, 13)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Dirección:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 159)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(40, 13)
+        Me.Label6.TabIndex = 4
+        Me.Label6.Text = "CURP:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 134)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(111, 13)
+        Me.Label5.TabIndex = 3
+        Me.Label5.Text = "Fecha de Nacimiento:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 81)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(45, 13)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "Género:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Apellidos:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 26)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Nombres:"
+        '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -134,271 +349,31 @@ Partial Class FrmDocente
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos academicos"
         '
-        'Label2
+        'TxtIdiomas
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 26)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(52, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Nombres:"
+        Me.TxtIdiomas.Location = New System.Drawing.Point(435, 74)
+        Me.TxtIdiomas.Name = "TxtIdiomas"
+        Me.TxtIdiomas.Size = New System.Drawing.Size(246, 20)
+        Me.TxtIdiomas.TabIndex = 27
         '
-        'Label3
+        'DtFechaIngreso
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 55)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 13)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Apellidos:"
+        Me.DtFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtFechaIngreso.Location = New System.Drawing.Point(104, 45)
+        Me.DtFechaIngreso.MaxDate = New Date(2019, 12, 31, 0, 0, 0, 0)
+        Me.DtFechaIngreso.MinDate = New Date(1940, 1, 1, 0, 0, 0, 0)
+        Me.DtFechaIngreso.Name = "DtFechaIngreso"
+        Me.DtFechaIngreso.Size = New System.Drawing.Size(209, 20)
+        Me.DtFechaIngreso.TabIndex = 14
         '
-        'Label4
+        'Label20
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 81)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(45, 13)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "Género:"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 134)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(111, 13)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "Fecha de Nacimiento:"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 159)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(40, 13)
-        Me.Label6.TabIndex = 4
-        Me.Label6.Text = "CURP:"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 107)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(55, 13)
-        Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Dirección:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(270, 26)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(43, 13)
-        Me.Label8.TabIndex = 6
-        Me.Label8.Text = "Ciudad:"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(270, 55)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(43, 13)
-        Me.Label9.TabIndex = 7
-        Me.Label9.Text = "Estado:"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(270, 81)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(24, 13)
-        Me.Label10.TabIndex = 8
-        Me.Label10.Text = "CP:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(270, 107)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(52, 13)
-        Me.Label11.TabIndex = 9
-        Me.Label11.Text = "Teléfono:"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(270, 134)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(38, 13)
-        Me.Label12.TabIndex = 10
-        Me.Label12.Text = "E-mail:"
-        '
-        'TxtNombres
-        '
-        Me.TxtNombres.Location = New System.Drawing.Point(64, 23)
-        Me.TxtNombres.Name = "TxtNombres"
-        Me.TxtNombres.Size = New System.Drawing.Size(200, 20)
-        Me.TxtNombres.TabIndex = 11
-        '
-        'TxtApellidos
-        '
-        Me.TxtApellidos.Location = New System.Drawing.Point(64, 52)
-        Me.TxtApellidos.Name = "TxtApellidos"
-        Me.TxtApellidos.Size = New System.Drawing.Size(200, 20)
-        Me.TxtApellidos.TabIndex = 12
-        '
-        'CboGenero
-        '
-        Me.CboGenero.FormattingEnabled = True
-        Me.CboGenero.Location = New System.Drawing.Point(64, 78)
-        Me.CboGenero.Name = "CboGenero"
-        Me.CboGenero.Size = New System.Drawing.Size(200, 21)
-        Me.CboGenero.TabIndex = 13
-        '
-        'DtFechaNacimiento
-        '
-        Me.DtFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtFechaNacimiento.Location = New System.Drawing.Point(120, 130)
-        Me.DtFechaNacimiento.MaxDate = New Date(2019, 12, 31, 0, 0, 0, 0)
-        Me.DtFechaNacimiento.MinDate = New Date(1940, 1, 1, 0, 0, 0, 0)
-        Me.DtFechaNacimiento.Name = "DtFechaNacimiento"
-        Me.DtFechaNacimiento.Size = New System.Drawing.Size(144, 20)
-        Me.DtFechaNacimiento.TabIndex = 15
-        '
-        'TxtCurp
-        '
-        Me.TxtCurp.Location = New System.Drawing.Point(64, 156)
-        Me.TxtCurp.Name = "TxtCurp"
-        Me.TxtCurp.Size = New System.Drawing.Size(200, 20)
-        Me.TxtCurp.TabIndex = 16
-        '
-        'TxtDireccion
-        '
-        Me.TxtDireccion.Location = New System.Drawing.Point(64, 104)
-        Me.TxtDireccion.Name = "TxtDireccion"
-        Me.TxtDireccion.Size = New System.Drawing.Size(200, 20)
-        Me.TxtDireccion.TabIndex = 14
-        '
-        'CboCiudad
-        '
-        Me.CboCiudad.FormattingEnabled = True
-        Me.CboCiudad.Location = New System.Drawing.Point(328, 22)
-        Me.CboCiudad.Name = "CboCiudad"
-        Me.CboCiudad.Size = New System.Drawing.Size(200, 21)
-        Me.CboCiudad.TabIndex = 17
-        '
-        'CboEstado
-        '
-        Me.CboEstado.FormattingEnabled = True
-        Me.CboEstado.Location = New System.Drawing.Point(328, 51)
-        Me.CboEstado.Name = "CboEstado"
-        Me.CboEstado.Size = New System.Drawing.Size(200, 21)
-        Me.CboEstado.TabIndex = 18
-        '
-        'TxtCp
-        '
-        Me.TxtCp.Location = New System.Drawing.Point(328, 78)
-        Me.TxtCp.Name = "TxtCp"
-        Me.TxtCp.Size = New System.Drawing.Size(200, 20)
-        Me.TxtCp.TabIndex = 19
-        '
-        'TxtTelefono
-        '
-        Me.TxtTelefono.Location = New System.Drawing.Point(328, 104)
-        Me.TxtTelefono.Name = "TxtTelefono"
-        Me.TxtTelefono.Size = New System.Drawing.Size(200, 20)
-        Me.TxtTelefono.TabIndex = 20
-        '
-        'TxtEmail
-        '
-        Me.TxtEmail.Location = New System.Drawing.Point(328, 130)
-        Me.TxtEmail.Name = "TxtEmail"
-        Me.TxtEmail.Size = New System.Drawing.Size(200, 20)
-        Me.TxtEmail.TabIndex = 21
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(578, 16)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(56, 13)
-        Me.Label13.TabIndex = 23
-        Me.Label13.Text = "Fotografía"
-        '
-        'TxtPlaza
-        '
-        Me.TxtPlaza.Location = New System.Drawing.Point(104, 19)
-        Me.TxtPlaza.Name = "TxtPlaza"
-        Me.TxtPlaza.Size = New System.Drawing.Size(209, 20)
-        Me.TxtPlaza.TabIndex = 13
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 22)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(68, 13)
-        Me.Label14.TabIndex = 12
-        Me.Label14.Tag = ""
-        Me.Label14.Text = "Clave(plaza):"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 48)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(92, 13)
-        Me.Label15.TabIndex = 14
-        Me.Label15.Text = "Fecha de ingreso:"
-        '
-        'TxtPerfil
-        '
-        Me.TxtPerfil.Location = New System.Drawing.Point(104, 71)
-        Me.TxtPerfil.Name = "TxtPerfil"
-        Me.TxtPerfil.Size = New System.Drawing.Size(209, 20)
-        Me.TxtPerfil.TabIndex = 15
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 74)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(33, 13)
-        Me.Label16.TabIndex = 16
-        Me.Label16.Text = "Perfil:"
-        '
-        'TxtPostgrado
-        '
-        Me.TxtPostgrado.Location = New System.Drawing.Point(104, 97)
-        Me.TxtPostgrado.Name = "TxtPostgrado"
-        Me.TxtPostgrado.Size = New System.Drawing.Size(209, 20)
-        Me.TxtPostgrado.TabIndex = 16
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 100)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(84, 13)
-        Me.Label17.TabIndex = 18
-        Me.Label17.Text = "Perfil Postgrado:"
-        '
-        'CboArea
-        '
-        Me.CboArea.FormattingEnabled = True
-        Me.CboArea.Location = New System.Drawing.Point(435, 19)
-        Me.CboArea.Name = "CboArea"
-        Me.CboArea.Size = New System.Drawing.Size(246, 21)
-        Me.CboArea.TabIndex = 21
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(325, 22)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(32, 13)
-        Me.Label18.TabIndex = 20
-        Me.Label18.Text = "Área:"
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(325, 74)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(104, 13)
+        Me.Label20.TabIndex = 24
+        Me.Label20.Text = "Idiomas que domina:"
         '
         'CboGrado
         '
@@ -417,31 +392,80 @@ Partial Class FrmDocente
         Me.Label19.TabIndex = 22
         Me.Label19.Text = "Grado academico:"
         '
-        'Label20
+        'CboArea
         '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(325, 74)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(104, 13)
-        Me.Label20.TabIndex = 24
-        Me.Label20.Text = "Idiomas que domina:"
+        Me.CboArea.FormattingEnabled = True
+        Me.CboArea.Location = New System.Drawing.Point(435, 19)
+        Me.CboArea.Name = "CboArea"
+        Me.CboArea.Size = New System.Drawing.Size(246, 21)
+        Me.CboArea.TabIndex = 21
         '
-        'DtFechaIngreso
+        'Label18
         '
-        Me.DtFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtFechaIngreso.Location = New System.Drawing.Point(104, 45)
-        Me.DtFechaIngreso.MaxDate = New Date(2019, 12, 31, 0, 0, 0, 0)
-        Me.DtFechaIngreso.MinDate = New Date(1940, 1, 1, 0, 0, 0, 0)
-        Me.DtFechaIngreso.Name = "DtFechaIngreso"
-        Me.DtFechaIngreso.Size = New System.Drawing.Size(209, 20)
-        Me.DtFechaIngreso.TabIndex = 14
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(325, 22)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(32, 13)
+        Me.Label18.TabIndex = 20
+        Me.Label18.Text = "Área:"
         '
-        'TxtIdiomas
+        'TxtPostgrado
         '
-        Me.TxtIdiomas.Location = New System.Drawing.Point(435, 74)
-        Me.TxtIdiomas.Name = "TxtIdiomas"
-        Me.TxtIdiomas.Size = New System.Drawing.Size(246, 20)
-        Me.TxtIdiomas.TabIndex = 27
+        Me.TxtPostgrado.Location = New System.Drawing.Point(104, 97)
+        Me.TxtPostgrado.Name = "TxtPostgrado"
+        Me.TxtPostgrado.Size = New System.Drawing.Size(209, 20)
+        Me.TxtPostgrado.TabIndex = 16
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(6, 100)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(84, 13)
+        Me.Label17.TabIndex = 18
+        Me.Label17.Text = "Perfil Postgrado:"
+        '
+        'TxtPerfil
+        '
+        Me.TxtPerfil.Location = New System.Drawing.Point(104, 71)
+        Me.TxtPerfil.Name = "TxtPerfil"
+        Me.TxtPerfil.Size = New System.Drawing.Size(209, 20)
+        Me.TxtPerfil.TabIndex = 15
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(6, 74)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(33, 13)
+        Me.Label16.TabIndex = 16
+        Me.Label16.Text = "Perfil:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(6, 48)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(92, 13)
+        Me.Label15.TabIndex = 14
+        Me.Label15.Text = "Fecha de ingreso:"
+        '
+        'TxtPlaza
+        '
+        Me.TxtPlaza.Location = New System.Drawing.Point(104, 19)
+        Me.TxtPlaza.Name = "TxtPlaza"
+        Me.TxtPlaza.Size = New System.Drawing.Size(209, 20)
+        Me.TxtPlaza.TabIndex = 13
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 22)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(68, 13)
+        Me.Label14.TabIndex = 12
+        Me.Label14.Tag = ""
+        Me.Label14.Text = "Clave(plaza):"
         '
         'BtnSalir
         '
@@ -490,15 +514,6 @@ Partial Class FrmDocente
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(556, 62)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 22
-        Me.PictureBox1.TabStop = False
-        '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -510,15 +525,6 @@ Partial Class FrmDocente
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Docente"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(571, 32)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 24
-        Me.Button1.Text = "Examinar"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmDocente
         '
@@ -539,9 +545,9 @@ Partial Class FrmDocente
         Me.Text = "Formulario docente"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
