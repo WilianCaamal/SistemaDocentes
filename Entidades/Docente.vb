@@ -18,4 +18,14 @@
     Property Area As String
     Property Grado As String
     Property Idiomas As String
+
+    Private edadDocente As Int32
+    Property Edad As Int32
+        Get
+            Return (DateTime.Now.Year - FechaNacimiento.Year)
+        End Get
+        Set(ByVal value As Int32)
+            edadDocente = value
+        End Set
+    End Property
 End Class
