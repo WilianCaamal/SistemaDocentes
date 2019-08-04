@@ -8,7 +8,8 @@ Public Class FrmListaDocentes
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
         Dim frmDocente As New FrmDocente With {
-            .IsNew = True
+            .IsNew = True,
+            .IdDocente = 0
         }
         resultado = frmDocente.ShowDialog()
         If resultado = DialogResult.Yes Then
@@ -63,7 +64,6 @@ Public Class FrmListaDocentes
         DgvDocentes.Columns.Item("Telefono").Visible = False
         DgvDocentes.Columns.Item("Email").Visible = False
         DgvDocentes.Columns.Item("Plaza").Visible = False
-        'DgvDocentes.Columns.Item("Perfil").Visible = False
         DgvDocentes.Columns.Item("Postgrado").Visible = False
         DgvDocentes.Columns.Item("Area").Visible = False
         DgvDocentes.Columns.Item("Grado").Visible = False
@@ -77,9 +77,14 @@ Public Class FrmListaDocentes
     Private Sub DgvDocentes_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDocentes.CellMouseDoubleClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
             Dim selectedRow = DgvDocentes.Rows(e.RowIndex).Cells
-            Dim frmDocente As New FrmDocente
-            frmDocente.IdDocente = selectedRow(0).Value
-            frmDocente.ShowDialog()
+            Dim frmDocente As New FrmDocente With {
+                .IdDocente = selectedRow(0).Value,
+                .IsNew = False
+            }
+            Dim respuesta = frmDocente.ShowDialog()
+            If respuesta = DialogResult.Yes Then
+                CargarDocentes()
+            End If
         End If
     End Sub
 End Class

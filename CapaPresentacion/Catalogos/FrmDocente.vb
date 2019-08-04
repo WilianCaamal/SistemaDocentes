@@ -48,9 +48,13 @@ Public Class FrmDocente
     Private Sub FrmDocente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If IsNew Then
             ActivarControles(IsNew)
+            BtnEliminar.Enabled = Not IsNew
+            BtnEditar.Enabled = Not IsNew
         Else
             CargarDatosDocente(IdDocente)
             ActivarControles(False)
+            BtnGuardar.Enabled = IsNew
+            objDocente.IdDocente = IdDocente
         End If
 
         CargarEstados()
@@ -63,6 +67,7 @@ Public Class FrmDocente
 
     Private Function ObtenerDocente() As Docente
         Dim objDocente As New Docente With {
+            .IdDocente = IdDocente,
             .Nombres = TxtNombres.Text.Trim,
             .Apellidos = TxtApellidos.Text.Trim,
             .Genero = CboGenero.Text.Trim,
@@ -103,11 +108,23 @@ Public Class FrmDocente
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
-        Dim respuesta = objDocentes.Agregar(ObtenerDocente())
-        If respuesta Then
-            MessageBox.Show("Se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If IdDocente = 0 Then
+            Dim respuesta = objDocentes.Agregar(ObtenerDocente())
+            If respuesta Then
+                MessageBox.Show("Se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                DialogResult = DialogResult.Yes
+            Else
+                MessageBox.Show("No se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        Else
+            Dim respuesta = objDocentes.Editar(ObtenerDocente())
+            If respuesta Then
+                MessageBox.Show("Se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                DialogResult = DialogResult.Yes
+            Else
+                MessageBox.Show("No se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         End If
-        DialogResult = DialogResult.Yes
     End Sub
 
     Private Sub CboEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboEstado.SelectedIndexChanged
@@ -116,6 +133,8 @@ Public Class FrmDocente
 
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles BtnEditar.Click
         ActivarControles(True)
+        BtnGuardar.Enabled = True
+        BtnEditar.Enabled = False
     End Sub
 
     Private Sub CargarDatosDocente(Id As Int32)

@@ -16,4 +16,8 @@ Public Class LbDocentes
         Return objDocentes.Agregar(objDocente)
     End Function
 
+    Public Function Editar(objDocente As Docente)
+        Return objDocentes.Editar(objDocente)
+    End Function
+
 End Class
