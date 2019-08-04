@@ -5,6 +5,7 @@ Public Class FrmListaDocentes
     Dim resultado As DialogResult
     Dim objDocente As New LbDocentes
     Dim listaDocentes As New List(Of Docente)
+    Private IdDocente As Int32
 
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
         Dim frmDocente As New FrmDocente With {
@@ -18,10 +19,16 @@ Public Class FrmListaDocentes
     End Sub
 
     Private Sub BtnFormacion_Click(sender As Object, e As EventArgs) Handles BtnFormacion.Click
-        Dim frmFormacion As New FrmFormacion
-        resultado = frmFormacion.ShowDialog()
-        If resultado = DialogResult.Yes Then
-            CargarDocentes()
+        If IdDocente <> 0 Then
+            Dim frmFormacion As New FrmFormacion With {
+            .IdDocente = IdDocente
+            }
+            resultado = frmFormacion.ShowDialog()
+            If resultado = DialogResult.Yes Then
+                CargarDocentes()
+            End If
+        Else
+            MessageBox.Show("Selecciones un registro antes", "Formacion de Docentes", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -38,6 +45,8 @@ Public Class FrmListaDocentes
             If count > 0 Then
                 DgvDocentes.DataSource = listaDocentes
                 ConfigurarGrid()
+                Dim selectedRow = DgvDocentes.Rows(0).Cells
+                IdDocente = selectedRow(0).Value
             Else
                 MessageBox.Show("Catalogo Vacio", "Listar Docentes", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
@@ -86,5 +95,10 @@ Public Class FrmListaDocentes
                 CargarDocentes()
             End If
         End If
+    End Sub
+
+    Private Sub DgvDocentes_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDocentes.CellMouseClick
+        Dim selectedRow = DgvDocentes.Rows(e.RowIndex).Cells
+        IdDocente = selectedRow(0).Value
     End Sub
 End Class

@@ -90,6 +90,7 @@
     <Compile Include="DalCursos.vb" />
     <Compile Include="DalDocentes.vb" />
     <Compile Include="DalEstados.vb" />
+    <Compile Include="DalEstudios.vb" />
     <Compile Include="DalMunicipios.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

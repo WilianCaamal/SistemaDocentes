@@ -41,6 +41,7 @@ Partial Class FrmListaDocentes
         Me.DgvDocentes.Location = New System.Drawing.Point(12, 120)
         Me.DgvDocentes.Name = "DgvDocentes"
         Me.DgvDocentes.ReadOnly = True
+        Me.DgvDocentes.RowHeadersVisible = False
         Me.DgvDocentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvDocentes.ShowEditingIcon = False
         Me.DgvDocentes.Size = New System.Drawing.Size(703, 213)
