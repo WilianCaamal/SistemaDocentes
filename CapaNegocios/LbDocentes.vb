@@ -20,4 +20,8 @@ Public Class LbDocentes
         Return objDocentes.Editar(objDocente)
     End Function
 
+    Public Function Eliminar(Id As Int32)
+        Return objDocentes.Eliminar(Id)
+    End Function
+
 End Class

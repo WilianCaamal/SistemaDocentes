@@ -19,6 +19,9 @@ Public Class FrmDocente
         Dim eliminar As DialogResult
         eliminar = MessageBox.Show("Desea eliminar al docente", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If eliminar = DialogResult.Yes Then
+            objDocentes.Eliminar(IdDocente)
+            MessageBox.Show("Se ha eliminado el docente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Question)
+            DialogResult = DialogResult.Yes
             Close()
         End If
     End Sub
@@ -46,6 +49,8 @@ Public Class FrmDocente
     End Sub
 
     Private Sub FrmDocente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CargarEstados()
+        CboGenero.SelectedIndex = 0
         If IsNew Then
             ActivarControles(IsNew)
             BtnEliminar.Enabled = Not IsNew
@@ -56,9 +61,6 @@ Public Class FrmDocente
             BtnGuardar.Enabled = IsNew
             objDocente.IdDocente = IdDocente
         End If
-
-        CargarEstados()
-        CboGenero.SelectedIndex = 0
     End Sub
 
     Private Sub ValidarCampos(form As Form)
@@ -144,9 +146,11 @@ Public Class FrmDocente
         TxtApellidos.Text = objDocente.Apellidos
 
         If objDocente.Genero = "Hombre" Then
+            CboGenero.SelectedItem = 0
             CboGenero.SelectedIndex = 0
         Else
             CboGenero.SelectedIndex = 1
+            CboGenero.SelectedItem = 1
         End If
 
         DtFechaNacimiento.Value = objDocente.FechaNacimiento

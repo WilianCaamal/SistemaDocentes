@@ -18,6 +18,7 @@ Public Class DalDocentes
         " PLAZA = {12},FECHA_INGRESO = {13},PERFIL = {14},POSTGRADO = {15},AREA = {16},GRADO = {17},IDIOMAS = {18}" +
         " WHERE ID_DOCENTE = {19}"
     Private ReadOnly SqlDocenteById = "SELECT * FROM DOCENTES WHERE ID_DOCENTE = {0}"
+    Private ReadOnly SqlDocenteDelete = "DELETE FROM DOCENTES WHERE ID_DOCENTE = @ID_DOCENTE"
     Private ListaDocentes As New List(Of Docente)
 
     Public Function ListarDocentes() As List(Of Docente)
@@ -176,6 +177,35 @@ Public Class DalDocentes
                 command.Parameters.AddWithValue("@IDIOMAS", objDocente.Idiomas)
                 command.Parameters.AddWithValue("@ID_DOCENTE", objDocente.IdDocente)
 
+                Dim respuesta = command.ExecuteNonQuery()
+
+                transaccion.Commit()
+                command.Dispose()
+                If respuesta > 0 Then
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                transaccion.Rollback()
+                Throw New Exception
+            End Try
+        End Using
+    End Function
+
+    Public Function Eliminar(Id As Int32) As Boolean
+        Using Conexion As New FbConnection
+            Conexion.ConnectionString = My.Settings.cadenaConexion
+            Dim transaccion As FbTransaction
+            Conexion.Open()
+            transaccion = Conexion.BeginTransaction
+            Dim command As New FbCommand With {
+                    .CommandText = SqlDocenteDelete,
+                    .Connection = Conexion,
+                    .Transaction = transaccion
+                }
+            Try
+                command.Parameters.AddWithValue("@ID_DOCENTE", Id)
                 Dim respuesta = command.ExecuteNonQuery()
 
                 transaccion.Commit()

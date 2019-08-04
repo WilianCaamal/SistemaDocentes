@@ -203,6 +203,7 @@ Partial Class FrmDocente
         '
         'CboGenero
         '
+        Me.CboGenero.DisplayMember = "1"
         Me.CboGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CboGenero.FormattingEnabled = True
         Me.CboGenero.Items.AddRange(New Object() {"Hombre", "Mujer"})
