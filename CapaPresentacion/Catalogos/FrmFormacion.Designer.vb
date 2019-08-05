@@ -49,8 +49,8 @@ Partial Class FrmFormacion
         Me.TxtDescripcionDocente = New System.Windows.Forms.TextBox()
         Me.TxtExpDocente = New System.Windows.Forms.TextBox()
         Me.TxtTiempoProfesional = New System.Windows.Forms.TextBox()
-        Me.TxtDescripcionProfecional = New System.Windows.Forms.TextBox()
-        Me.TxtExpProfecional = New System.Windows.Forms.TextBox()
+        Me.TxtDescripcionProfesional = New System.Windows.Forms.TextBox()
+        Me.TxtExpProfesional = New System.Windows.Forms.TextBox()
         Me.DtFechaEstudio = New System.Windows.Forms.DateTimePicker()
         Me.TxtEstudio = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -278,12 +278,19 @@ Partial Class FrmFormacion
         '
         'DgvEstudios
         '
+        Me.DgvEstudios.AllowUserToAddRows = False
+        Me.DgvEstudios.AllowUserToDeleteRows = False
         Me.DgvEstudios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DgvEstudios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvEstudios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvEstudios.Location = New System.Drawing.Point(6, 176)
+        Me.DgvEstudios.MultiSelect = False
         Me.DgvEstudios.Name = "DgvEstudios"
+        Me.DgvEstudios.ReadOnly = True
+        Me.DgvEstudios.RowHeadersVisible = False
+        Me.DgvEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvEstudios.Size = New System.Drawing.Size(898, 118)
         Me.DgvEstudios.TabIndex = 1
         '
@@ -297,8 +304,8 @@ Partial Class FrmFormacion
         Me.GroupBox2.Controls.Add(Me.TxtDescripcionDocente)
         Me.GroupBox2.Controls.Add(Me.TxtExpDocente)
         Me.GroupBox2.Controls.Add(Me.TxtTiempoProfesional)
-        Me.GroupBox2.Controls.Add(Me.TxtDescripcionProfecional)
-        Me.GroupBox2.Controls.Add(Me.TxtExpProfecional)
+        Me.GroupBox2.Controls.Add(Me.TxtDescripcionProfesional)
+        Me.GroupBox2.Controls.Add(Me.TxtExpProfesional)
         Me.GroupBox2.Controls.Add(Me.DtFechaEstudio)
         Me.GroupBox2.Controls.Add(Me.TxtEstudio)
         Me.GroupBox2.Controls.Add(Me.Label17)
@@ -320,7 +327,7 @@ Partial Class FrmFormacion
         '
         Me.BtnEliminarEstudios.Image = Global.CapaPresentacion.My.Resources.ResourceImages24px.delete_24px
         Me.BtnEliminarEstudios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnEliminarEstudios.Location = New System.Drawing.Point(812, 36)
+        Me.BtnEliminarEstudios.Location = New System.Drawing.Point(812, 31)
         Me.BtnEliminarEstudios.Name = "BtnEliminarEstudios"
         Me.BtnEliminarEstudios.Size = New System.Drawing.Size(80, 30)
         Me.BtnEliminarEstudios.TabIndex = 20
@@ -332,7 +339,7 @@ Partial Class FrmFormacion
         '
         Me.BtnAgregarEstudios.Image = Global.CapaPresentacion.My.Resources.ResourceImages24px.add_24px
         Me.BtnAgregarEstudios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnAgregarEstudios.Location = New System.Drawing.Point(726, 36)
+        Me.BtnAgregarEstudios.Location = New System.Drawing.Point(726, 31)
         Me.BtnAgregarEstudios.Name = "BtnAgregarEstudios"
         Me.BtnAgregarEstudios.Size = New System.Drawing.Size(80, 30)
         Me.BtnAgregarEstudios.TabIndex = 19
@@ -342,50 +349,54 @@ Partial Class FrmFormacion
         '
         'TxtTiempoDocente
         '
-        Me.TxtTiempoDocente.Location = New System.Drawing.Point(431, 138)
+        Me.TxtTiempoDocente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTiempoDocente.Location = New System.Drawing.Point(726, 138)
+        Me.TxtTiempoDocente.MaxLength = 20
         Me.TxtTiempoDocente.Name = "TxtTiempoDocente"
         Me.TxtTiempoDocente.Size = New System.Drawing.Size(164, 20)
         Me.TxtTiempoDocente.TabIndex = 16
         '
         'TxtDescripcionDocente
         '
-        Me.TxtDescripcionDocente.Location = New System.Drawing.Point(235, 138)
+        Me.TxtDescripcionDocente.Location = New System.Drawing.Point(382, 138)
         Me.TxtDescripcionDocente.Name = "TxtDescripcionDocente"
-        Me.TxtDescripcionDocente.Size = New System.Drawing.Size(164, 20)
+        Me.TxtDescripcionDocente.Size = New System.Drawing.Size(317, 20)
         Me.TxtDescripcionDocente.TabIndex = 15
         '
         'TxtExpDocente
         '
         Me.TxtExpDocente.Location = New System.Drawing.Point(11, 138)
         Me.TxtExpDocente.Name = "TxtExpDocente"
-        Me.TxtExpDocente.Size = New System.Drawing.Size(192, 20)
+        Me.TxtExpDocente.Size = New System.Drawing.Size(352, 20)
         Me.TxtExpDocente.TabIndex = 14
         '
         'TxtTiempoProfesional
         '
-        Me.TxtTiempoProfesional.Location = New System.Drawing.Point(431, 93)
+        Me.TxtTiempoProfesional.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTiempoProfesional.Location = New System.Drawing.Point(726, 93)
+        Me.TxtTiempoProfesional.MaxLength = 20
         Me.TxtTiempoProfesional.Name = "TxtTiempoProfesional"
         Me.TxtTiempoProfesional.Size = New System.Drawing.Size(164, 20)
         Me.TxtTiempoProfesional.TabIndex = 13
         '
-        'TxtDescripcionProfecional
+        'TxtDescripcionProfesional
         '
-        Me.TxtDescripcionProfecional.Location = New System.Drawing.Point(235, 93)
-        Me.TxtDescripcionProfecional.Name = "TxtDescripcionProfecional"
-        Me.TxtDescripcionProfecional.Size = New System.Drawing.Size(164, 20)
-        Me.TxtDescripcionProfecional.TabIndex = 11
+        Me.TxtDescripcionProfesional.Location = New System.Drawing.Point(382, 93)
+        Me.TxtDescripcionProfesional.Name = "TxtDescripcionProfesional"
+        Me.TxtDescripcionProfesional.Size = New System.Drawing.Size(317, 20)
+        Me.TxtDescripcionProfesional.TabIndex = 11
         '
-        'TxtExpProfecional
+        'TxtExpProfesional
         '
-        Me.TxtExpProfecional.Location = New System.Drawing.Point(11, 91)
-        Me.TxtExpProfecional.Name = "TxtExpProfecional"
-        Me.TxtExpProfecional.Size = New System.Drawing.Size(192, 20)
-        Me.TxtExpProfecional.TabIndex = 10
+        Me.TxtExpProfesional.Location = New System.Drawing.Point(11, 91)
+        Me.TxtExpProfesional.Name = "TxtExpProfesional"
+        Me.TxtExpProfesional.Size = New System.Drawing.Size(352, 20)
+        Me.TxtExpProfesional.TabIndex = 10
         '
         'DtFechaEstudio
         '
         Me.DtFechaEstudio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtFechaEstudio.Location = New System.Drawing.Point(494, 41)
+        Me.DtFechaEstudio.Location = New System.Drawing.Point(499, 42)
         Me.DtFechaEstudio.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
         Me.DtFechaEstudio.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DtFechaEstudio.Name = "DtFechaEstudio"
@@ -394,6 +405,7 @@ Partial Class FrmFormacion
         '
         'TxtEstudio
         '
+        Me.TxtEstudio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtEstudio.Location = New System.Drawing.Point(11, 42)
         Me.TxtEstudio.Name = "TxtEstudio"
         Me.TxtEstudio.Size = New System.Drawing.Size(477, 20)
@@ -402,7 +414,7 @@ Partial Class FrmFormacion
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(8, 121)
+        Me.Label17.Location = New System.Drawing.Point(8, 117)
         Me.Label17.Margin = New System.Windows.Forms.Padding(5)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(109, 13)
@@ -412,7 +424,7 @@ Partial Class FrmFormacion
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(443, 121)
+        Me.Label16.Location = New System.Drawing.Point(723, 117)
         Me.Label16.Margin = New System.Windows.Forms.Padding(5)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(45, 13)
@@ -422,7 +434,7 @@ Partial Class FrmFormacion
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(443, 70)
+        Me.Label15.Location = New System.Drawing.Point(723, 72)
         Me.Label15.Margin = New System.Windows.Forms.Padding(5)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(45, 13)
@@ -432,7 +444,7 @@ Partial Class FrmFormacion
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(232, 121)
+        Me.Label14.Location = New System.Drawing.Point(379, 117)
         Me.Label14.Margin = New System.Windows.Forms.Padding(5)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(66, 13)
@@ -442,7 +454,7 @@ Partial Class FrmFormacion
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(232, 70)
+        Me.Label13.Location = New System.Drawing.Point(379, 70)
         Me.Label13.Margin = New System.Windows.Forms.Padding(5)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(66, 13)
@@ -452,7 +464,7 @@ Partial Class FrmFormacion
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(491, 21)
+        Me.Label12.Location = New System.Drawing.Point(496, 21)
         Me.Label12.Margin = New System.Windows.Forms.Padding(5)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(40, 13)
@@ -716,8 +728,8 @@ Partial Class FrmFormacion
     Friend WithEvents TxtDescripcionDocente As TextBox
     Friend WithEvents TxtExpDocente As TextBox
     Friend WithEvents TxtTiempoProfesional As TextBox
-    Friend WithEvents TxtDescripcionProfecional As TextBox
-    Friend WithEvents TxtExpProfecional As TextBox
+    Friend WithEvents TxtDescripcionProfesional As TextBox
+    Friend WithEvents TxtExpProfesional As TextBox
     Friend WithEvents DtFechaEstudio As DateTimePicker
     Friend WithEvents TxtEstudio As TextBox
     Friend WithEvents Label17 As Label
