@@ -7,6 +7,8 @@ Public Class FrmFormacion
     Dim objDocentes As New LbDocentes
     Dim listaEstudios As New List(Of Estudio)
     Dim objEstudios As New LbEstudios
+    Dim listaCursos As New List(Of Curso)
+    Dim objCursos As New LbCursos
 
     Private Sub ActivarControles(activar As Boolean)
         TxtNombreDocente.Enabled = activar
@@ -47,11 +49,13 @@ Public Class FrmFormacion
         TxtInstitucion.Text = String.Empty
         TxtTiempoCurso.Text = String.Empty
         DtFechaCurso.Value = DateTime.Now
+        DgvCursos.DataSource = Nothing
     End Sub
 
     Private Sub FrmFormacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ActivarControles(False)
         ListarEstudios()
+        ListarCursos()
         CargarDatosDocente()
     End Sub
 
@@ -90,7 +94,7 @@ Public Class FrmFormacion
                 ConfigGridEstudios()
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Listar Estudios", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -136,6 +140,57 @@ Public Class FrmFormacion
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Agregar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ListarCursos()
+        Try
+            DgvCursos.DataSource = Nothing
+            listaCursos.Clear()
+            listaCursos = objCursos.ListarCursos(IdDocente)
+            Dim count = listaCursos.Count
+            If count > 0 Then
+                DgvCursos.DataSource = listaCursos
+                ConfigGridCursos()
+            Else
+                DgvCursos.DataSource = listaCursos
+                ConfigGridCursos()
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString, "Listar Cursos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ConfigGridCursos()
+        DgvCursos.Columns.Item("IdCurso").Visible = False
+        DgvCursos.Columns.Item("IdDocente").Visible = False
+        DgvCursos.Columns.Item("Nombre").HeaderCell.Value = "Curso Tomado"
+        DgvCursos.Columns.Item("Institucion").HeaderCell.Value = "Institución"
+        DgvCursos.Columns.Item("FechaCurso").HeaderCell.Value = "Fecha"
+    End Sub
+
+    Private Function ObtenerCurso() As Curso
+        Dim objCurso As New Curso With {
+            .IdDocente = IdDocente,
+            .Nombre = TxtCurso.Text.Trim,
+            .Institucion = TxtInstitucion.Text.Trim,
+            .Tiempo = TxtTiempoCurso.Text.Trim,
+            .FechaCurso = DtFechaCurso.Value
+        }
+        Return objCurso
+    End Function
+
+    Private Sub BtnAgregarCurso_Click(sender As Object, e As EventArgs) Handles BtnAgregarCurso.Click
+        Try
+            Dim respuesta = objCursos.Agregar(ObtenerCurso())
+            If Not respuesta Then
+                MessageBox.Show("No se agrego el registro", "Agregar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                LimpiarCamposCurso()
+                ListarCursos()
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Agregar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class
