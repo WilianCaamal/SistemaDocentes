@@ -110,7 +110,7 @@ Partial Class FrmFormacion
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 67)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(918, 130)
+        Me.GroupBox1.Size = New System.Drawing.Size(920, 130)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos el docente"
@@ -261,7 +261,7 @@ Partial Class FrmFormacion
         Me.TabControl1.Location = New System.Drawing.Point(12, 203)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(918, 326)
+        Me.TabControl1.Size = New System.Drawing.Size(920, 396)
         Me.TabControl1.TabIndex = 2
         '
         'TabPage1
@@ -271,7 +271,7 @@ Partial Class FrmFormacion
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(910, 300)
+        Me.TabPage1.Size = New System.Drawing.Size(912, 370)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Estudios Realizados"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -291,7 +291,7 @@ Partial Class FrmFormacion
         Me.DgvEstudios.ReadOnly = True
         Me.DgvEstudios.RowHeadersVisible = False
         Me.DgvEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvEstudios.Size = New System.Drawing.Size(898, 118)
+        Me.DgvEstudios.Size = New System.Drawing.Size(900, 188)
         Me.DgvEstudios.TabIndex = 1
         '
         'GroupBox2
@@ -318,7 +318,7 @@ Partial Class FrmFormacion
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(898, 164)
+        Me.GroupBox2.Size = New System.Drawing.Size(900, 164)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
@@ -498,17 +498,27 @@ Partial Class FrmFormacion
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(910, 300)
+        Me.TabPage2.Size = New System.Drawing.Size(912, 370)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Cursos Tomados"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'DgvCursos
         '
+        Me.DgvCursos.AllowUserToAddRows = False
+        Me.DgvCursos.AllowUserToDeleteRows = False
+        Me.DgvCursos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DgvCursos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DgvCursos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvCursos.Location = New System.Drawing.Point(7, 135)
+        Me.DgvCursos.MultiSelect = False
         Me.DgvCursos.Name = "DgvCursos"
-        Me.DgvCursos.Size = New System.Drawing.Size(897, 159)
+        Me.DgvCursos.ReadOnly = True
+        Me.DgvCursos.RowHeadersVisible = False
+        Me.DgvCursos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DgvCursos.Size = New System.Drawing.Size(899, 229)
         Me.DgvCursos.TabIndex = 2
         '
         'GroupBox3
@@ -548,7 +558,7 @@ Partial Class FrmFormacion
         Me.DtFechaCurso.Location = New System.Drawing.Point(11, 92)
         Me.DtFechaCurso.Name = "DtFechaCurso"
         Me.DtFechaCurso.Size = New System.Drawing.Size(150, 20)
-        Me.DtFechaCurso.TabIndex = 7
+        Me.DtFechaCurso.TabIndex = 6
         '
         'BtnAgregarCurso
         '
@@ -564,13 +574,15 @@ Partial Class FrmFormacion
         '
         'TxtTiempoCurso
         '
+        Me.TxtTiempoCurso.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtTiempoCurso.Location = New System.Drawing.Point(211, 92)
         Me.TxtTiempoCurso.Name = "TxtTiempoCurso"
         Me.TxtTiempoCurso.Size = New System.Drawing.Size(150, 20)
-        Me.TxtTiempoCurso.TabIndex = 6
+        Me.TxtTiempoCurso.TabIndex = 7
         '
         'TxtInstitucion
         '
+        Me.TxtInstitucion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtInstitucion.Location = New System.Drawing.Point(367, 42)
         Me.TxtInstitucion.Name = "TxtInstitucion"
         Me.TxtInstitucion.Size = New System.Drawing.Size(350, 20)
@@ -578,6 +590,7 @@ Partial Class FrmFormacion
         '
         'TxtCurso
         '
+        Me.TxtCurso.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtCurso.Location = New System.Drawing.Point(11, 42)
         Me.TxtCurso.Name = "TxtCurso"
         Me.TxtCurso.Size = New System.Drawing.Size(350, 20)
@@ -674,7 +687,7 @@ Partial Class FrmFormacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(942, 541)
+        Me.ClientSize = New System.Drawing.Size(944, 611)
         Me.Controls.Add(Me.BtnSalir)
         Me.Controls.Add(Me.BtnEditar)
         Me.Controls.Add(Me.BtnNuevo)
