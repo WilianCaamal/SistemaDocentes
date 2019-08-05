@@ -4,11 +4,13 @@ Imports Entidades
 Public Class FrmFormacion
     Property IdDocente As Int32
     Dim objDocente As New Docente
+    Dim objEstudio As New Estudio
     Dim objDocentes As New LbDocentes
     Dim listaEstudios As New List(Of Estudio)
     Dim objEstudios As New LbEstudios
     Dim listaCursos As New List(Of Curso)
     Dim objCursos As New LbCursos
+    Private Property IdEstudio As Int32
 
     Private Sub ActivarControles(activar As Boolean)
         TxtNombreDocente.Enabled = activar
@@ -19,6 +21,20 @@ Public Class FrmFormacion
         TxtCurp.Enabled = activar
         TxtGrado.Enabled = activar
         TxtIdiomas.Enabled = activar
+    End Sub
+
+    Public Sub ActivarControlesEstudios(activar As Boolean)
+        TxtEstudio.Enabled = activar
+        DtFechaEstudio.Enabled = activar
+        TxtExpProfesional.Enabled = activar
+        TxtDescripcionProfesional.Enabled = activar
+        TxtTiempoProfesional.Enabled = activar
+        TxtExpDocente.Enabled = activar
+        TxtDescripcionDocente.Enabled = activar
+        TxtTiempoDocente.Enabled = activar
+        BtnAgregarEstudios.Enabled = activar
+        BtnEliminarEstudios.Enabled = Not activar
+        BtnEditar.Enabled = Not activar
     End Sub
 
     Private Sub LimpiarCamposDocente()
@@ -34,6 +50,7 @@ Public Class FrmFormacion
 
     Private Sub LimpiarCamposEstudio()
         TxtEstudio.Text = String.Empty
+        TxtEstudio.Select()
         DtFechaEstudio.Value = DateTime.Now
         TxtExpProfesional.Text = String.Empty
         TxtDescripcionProfesional.Text = String.Empty
@@ -41,7 +58,6 @@ Public Class FrmFormacion
         TxtExpDocente.Text = String.Empty
         TxtDescripcionDocente.Text = String.Empty
         TxtTiempoDocente.Text = String.Empty
-        DgvEstudios.DataSource = Nothing
     End Sub
 
     Private Sub LimpiarCamposCurso()
@@ -53,10 +69,13 @@ Public Class FrmFormacion
     End Sub
 
     Private Sub FrmFormacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        BtnEliminarEstudios.Enabled = False
         ActivarControles(False)
+        ActivarControlesEstudios(False)
         ListarEstudios()
         ListarCursos()
         CargarDatosDocente()
+        TabControl1.SelectedIndex = 0
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
@@ -89,6 +108,11 @@ Public Class FrmFormacion
             If count > 0 Then
                 DgvEstudios.DataSource = listaEstudios
                 ConfigGridEstudios()
+                DgvEstudios.Rows(0).Selected = True
+                Dim selectedRow = DgvEstudios.Rows(0).Cells
+                IdEstudio = selectedRow(0).Value
+                CargarDatosEstudio(IdEstudio)
+                BtnEliminarEstudios.Enabled = True
             Else
                 DgvEstudios.DataSource = listaEstudios
                 ConfigGridEstudios()
@@ -114,8 +138,25 @@ Public Class FrmFormacion
         End Try
     End Sub
 
+    Private Sub CargarDatosEstudio(IdEstudio As Int32)
+        Try
+            objEstudio = objEstudios.GetEstudioById(IdEstudio)
+            TxtEstudio.Text = objEstudio.Nombre
+            DtFechaEstudio.Value = objEstudio.FechaEstudio
+            TxtExpProfesional.Text = objEstudio.ExpProfesional
+            TxtDescripcionProfesional.Text = objEstudio.DescripcionProfesional
+            TxtTiempoProfesional.Text = objEstudio.TiempoExpProfesional
+            TxtExpDocente.Text = objEstudio.ExpDocente
+            TxtDescripcionDocente.Text = objEstudio.DescripcionDocente
+            TxtTiempoDocente.Text = objEstudio.TiempoExpDocente
+        Catch ex As Exception
+            MessageBox.Show("No se logro cargar datos del estudio", "Cargar Datos Estudio", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Private Function ObtenerEstudio() As Estudio
         Dim objEstudio As New Estudio With {
+            .IdEstudio = IdEstudio,
             .IdDocente = IdDocente,
             .Nombre = TxtEstudio.Text.Trim,
             .ExpProfesional = TxtExpProfesional.Text.Trim,
@@ -131,12 +172,25 @@ Public Class FrmFormacion
 
     Private Sub BtnAgregarEstudios_Click(sender As Object, e As EventArgs) Handles BtnAgregarEstudios.Click
         Try
-            Dim respuesta = objEstudios.Agregar(ObtenerEstudio())
-            If Not respuesta Then
-                MessageBox.Show("No se agrego el registro", "Agregar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Dim respuesta As Boolean
+            If IdEstudio <> 0 Then
+                respuesta = objEstudios.Editar(ObtenerEstudio())
+                If Not respuesta Then
+                    MessageBox.Show("No se edito el registro", "Editar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    LimpiarCamposEstudio()
+                    ActivarControlesEstudios(False)
+                    ListarEstudios()
+                End If
             Else
-                LimpiarCamposEstudio()
-                ListarEstudios()
+                respuesta = objEstudios.Agregar(ObtenerEstudio())
+                If Not respuesta Then
+                    MessageBox.Show("No se agrego el registro", "Agregar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    LimpiarCamposEstudio()
+                    ActivarControlesEstudios(False)
+                    ListarEstudios()
+                End If
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Agregar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -192,5 +246,30 @@ Public Class FrmFormacion
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Agregar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub DgvEstudios_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvEstudios.CellMouseClick
+        Dim selectedRow = DgvEstudios.Rows(e.RowIndex).Cells
+        IdEstudio = selectedRow(0).Value
+        If IdEstudio <> 0 Then
+            CargarDatosEstudio(IdEstudio)
+            ActivarControlesEstudios(False)
+        End If
+    End Sub
+
+    Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles BtnEditar.Click
+        ActivarControlesEstudios(True)
+        BtnAgregarEstudios.Enabled = True
+    End Sub
+
+    Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
+        Dim indexTab = TabControl1.SelectedIndex
+        IdEstudio = 0
+        If indexTab = 0 Then
+            ActivarControlesEstudios(True)
+            LimpiarCamposEstudio()
+        Else
+            LimpiarCamposCurso()
+        End If
     End Sub
 End Class

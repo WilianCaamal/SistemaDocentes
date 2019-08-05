@@ -9,4 +9,13 @@ Public Class LbEstudios
     Public Function Agregar(objEstudio As Estudio) As Boolean
         Return objEstudios.Agregar(objEstudio)
     End Function
+
+    Public Function GetEstudioById(IdEstudio As Int32) As Estudio
+        Return objEstudios.GetEstudioById(IdEstudio)
+    End Function
+
+    Public Function Editar(objEstudio As Estudio) As Boolean
+        Return objEstudios.Editar(objEstudio)
+    End Function
+
 End Class
