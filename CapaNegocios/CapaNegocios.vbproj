@@ -86,6 +86,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LbCursos.vb" />
     <Compile Include="LbDocentes.vb" />
     <Compile Include="LbEstados.vb" />
     <Compile Include="LbEstudios.vb" />
