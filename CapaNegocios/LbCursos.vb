@@ -10,4 +10,13 @@ Public Class LbCursos
     Public Function Agregar(objCurso As Curso) As Boolean
         Return objCursos.Agregar(objCurso)
     End Function
+
+    Public Function GetCursoById(IdCurso As Int32) As Curso
+        Return objCursos.GetCursoById(IdCurso)
+    End Function
+
+    Public Function Editar(objCurso As Curso) As Boolean
+        Return objCursos.Editar(objCurso)
+    End Function
+
 End Class

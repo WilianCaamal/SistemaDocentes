@@ -562,13 +562,13 @@ Partial Class FrmFormacion
         '
         'BtnAgregarCurso
         '
-        Me.BtnAgregarCurso.Image = Global.CapaPresentacion.My.Resources.ResourceImages24px.add_24px
+        Me.BtnAgregarCurso.Image = Global.CapaPresentacion.My.Resources.ResourceImages24px.save_24px
         Me.BtnAgregarCurso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnAgregarCurso.Location = New System.Drawing.Point(726, 32)
         Me.BtnAgregarCurso.Name = "BtnAgregarCurso"
         Me.BtnAgregarCurso.Size = New System.Drawing.Size(80, 30)
         Me.BtnAgregarCurso.TabIndex = 3
-        Me.BtnAgregarCurso.Text = "Agregar"
+        Me.BtnAgregarCurso.Text = "Guardar"
         Me.BtnAgregarCurso.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnAgregarCurso.UseVisualStyleBackColor = True
         '
