@@ -312,6 +312,7 @@ Public Class FrmFormacion
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles BtnNuevo.Click
         Dim indexTab = TabControl1.SelectedIndex
         IdEstudio = 0
+        IdCurso = 0
         If indexTab = 0 Then
             ActivarControlesEstudios(True)
             LimpiarCamposEstudio()

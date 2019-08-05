@@ -1,24 +1,27 @@
-﻿Imports Entidades
+﻿Imports System.Text
+Imports Entidades
 Imports FirebirdSql.Data.FirebirdClient
 
 Public Class DalCursos
-    Private ReadOnly SqlListaCursos = "SELECT * FROM CURSOS WHERE ID_DOCENTE = @ID_DOCENTE"
-    Private ReadOnly SqlCursosAdd = "INSERT INTO CURSOS " +
-        "(ID_DOCENTE,NOMBRE_CURSO,INSTITUCION,TIEMPO,FECHA_CURSO) " +
-        "VALUES " +
-        "(@ID_DOCENTE,@NOMBRE_CURSO,@INSTITUCION,@TIEMPO,@FECHA_CURSO)"
-    Private ReadOnly SqlCursoEdit = "UPDATE CURSOS SET " +
-        "ID_DOCENTE = @ID_DOCENTE, NOMBRE_CURSO = @NOMBRE, INSTITUCION = @INSTITUCION, TIEMPO = @TIEMPO, FECHA_CURSO = @FECHA_CURSO " +
-        "WHERE ID_CURSO = @ID_CURSO"
-    Private ReadOnly SqlCursoById = "SELECT * FROM CURSOS WHERE ID_CURSO = @ID_CURSO"
+    Private Sql As New StringBuilder
     Private listaCursos As New List(Of Curso)
 
+    ''' <summary>
+    ''' Lista de cursos de un docente
+    ''' </summary>
+    ''' <param name="IdDocente">Id de un docente</param>
+    ''' <returns>Lista de Cursos</returns>
     Function ListarCursos(IdDocente As Int32) As List(Of Curso)
+        Sql.Clear()
+        Sql.Append("SELECT * FROM CURSOS ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE ")
+
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion
             conexion.Open()
             Dim command As New FbCommand With {
-                    .CommandText = SqlListaCursos,
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
             Try
@@ -47,15 +50,39 @@ Public Class DalCursos
         Return listaCursos
     End Function
 
+    ''' <summary>
+    ''' Agrega un registro en cursos
+    ''' </summary>
+    ''' <param name="objCurso">Object Type Curso</param>
+    ''' <returns>True o False</returns>
     Function Agregar(objCurso As Curso) As Boolean
         Dim resultado As Boolean
+
+        Sql.Clear()
+        Sql.Append("INSERT INTO CURSOS ")
+        Sql.Append("( ")
+        Sql.Append("ID_DOCENTE, ")
+        Sql.Append("NOMBRE_CURSO, ")
+        Sql.Append("INSTITUCION, ")
+        Sql.Append("TIEMPO, ")
+        Sql.Append("FECHA_CURSO ")
+        Sql.Append(") ")
+        Sql.Append("VALUES ")
+        Sql.Append("( ")
+        Sql.Append("@ID_DOCENTE, ")
+        Sql.Append("@NOMBRE_CURSO, ")
+        Sql.Append("@INSTITUCION, ")
+        Sql.Append("@TIEMPO, ")
+        Sql.Append("@FECHA_CURSO ")
+        Sql.Append(") ")
+
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
             Dim transaccion As FbTransaction
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlCursosAdd,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
@@ -82,13 +109,24 @@ Public Class DalCursos
         Return resultado
     End Function
 
+    ''' <summary>
+    ''' Obtiene los datos de un curso
+    ''' </summary>
+    ''' <param name="IdCurso">Ud del curso a consultar</param>
+    ''' <returns>Object Type Curso</returns>
     Function GetCursoById(IdCurso As Int32) As Curso
         Dim objCurso As New Curso
+
+        Sql.Clear()
+        Sql.Append("SELECT * FROM CURSOS ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_CURSO = @ID_CURSO ")
+
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion
             conexion.Open()
             Dim command As New FbCommand With {
-                    .CommandText = SqlCursoById,
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
             Try
@@ -114,15 +152,31 @@ Public Class DalCursos
         Return objCurso
     End Function
 
+    ''' <summary>
+    ''' Edita un registro en cursos
+    ''' </summary>
+    ''' <param name="objCurso">Object Type Curso</param>
+    ''' <returns>True o False</returns>
     Function Editar(objCurso As Curso) As Boolean
         Dim resultado As Boolean
+
+        Sql.Clear()
+        Sql.Append("UPDATE CURSOS SET ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE, ")
+        Sql.Append("NOMBRE_CURSO = @NOMBRE, ")
+        Sql.Append("INSTITUCION = @INSTITUCION, ")
+        Sql.Append("TIEMPO = @TIEMPO, ")
+        Sql.Append("FECHA_CURSO = @FECHA_CURSO ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_CURSO = @ID_CURSO")
+
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
             Dim transaccion As FbTransaction
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlCursoEdit,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
