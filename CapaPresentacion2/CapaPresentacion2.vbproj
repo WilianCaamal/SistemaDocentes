@@ -172,7 +172,9 @@
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Reportes\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\employee_card_48px.png" />
     <None Include="Resources\school_director_48px.png" />
