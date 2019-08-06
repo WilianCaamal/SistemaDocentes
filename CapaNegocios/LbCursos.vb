@@ -19,4 +19,8 @@ Public Class LbCursos
         Return objCursos.Editar(objCurso)
     End Function
 
+    Public Function Eliminar(Id As Int32)
+        Return objCursos.Eliminar(Id)
+    End Function
+
 End Class

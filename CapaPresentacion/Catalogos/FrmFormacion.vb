@@ -273,6 +273,7 @@ Public Class FrmFormacion
                     MessageBox.Show("No se edito el registro", "Editar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
                     LimpiarCamposCurso()
+                    ActivarControlesCursos(False)
                     ListarCursos()
                 End If
             Else
@@ -281,6 +282,7 @@ Public Class FrmFormacion
                     MessageBox.Show("No se agrego el registro", "Agregar Curso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
                     LimpiarCamposCurso()
+                    ActivarControlesCursos(False)
                     ListarCursos()
                 End If
             End If
@@ -338,6 +340,16 @@ Public Class FrmFormacion
             objEstudios.Eliminar(IdEstudio)
             MessageBox.Show("Se ha eliminado el estudio", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ListarEstudios()
+        End If
+    End Sub
+
+    Private Sub BtnEliminarCurso_Click(sender As Object, e As EventArgs) Handles BtnEliminarCurso.Click
+        Dim eliminar As DialogResult
+        eliminar = MessageBox.Show("Desea eliminar el curso", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If eliminar = DialogResult.Yes Then
+            objCursos.Eliminar(IdCurso)
+            MessageBox.Show("Se ha eliminado el curso", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ListarCursos()
         End If
     End Sub
 End Class

@@ -236,7 +236,7 @@ Public Class DalEstudios
     ''' <summary>
     ''' Elimina un registro de estudio
     ''' </summary>
-    ''' <param name="IdDocente">ID del estudio a eliminar</param>
+    ''' <param name="IdEstudio">ID del estudio a eliminar</param>
     ''' <returns>True o False</returns>
     Public Function Eliminar(IdEstudio As Int32) As Boolean
 
