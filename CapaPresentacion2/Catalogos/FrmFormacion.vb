@@ -292,12 +292,16 @@ Public Class FrmFormacion
     End Sub
 
     Private Sub DgvEstudios_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvEstudios.CellMouseClick
-        Dim selectedRow = DgvEstudios.Rows(e.RowIndex).Cells
-        IdEstudio = CInt(selectedRow(0).Value)
-        If IdEstudio <> 0 Then
-            CargarDatosEstudio(IdEstudio)
-            ActivarControlesEstudios(False)
-        End If
+        Try
+            Dim selectedRow = DgvEstudios.Rows(e.RowIndex).Cells
+            IdEstudio = CInt(selectedRow(0).Value)
+            If IdEstudio <> 0 Then
+                CargarDatosEstudio(IdEstudio)
+                ActivarControlesEstudios(False)
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles BtnEditar.Click
@@ -325,12 +329,16 @@ Public Class FrmFormacion
     End Sub
 
     Private Sub DgvCursos_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvCursos.CellMouseClick
-        Dim selectedRow = DgvCursos.Rows(e.RowIndex).Cells
-        IdCurso = CInt(selectedRow(0).Value)
-        If IdCurso <> 0 Then
-            CargarDatosCurso(IdCurso)
-            ActivarControlesCursos(False)
-        End If
+        Try
+            Dim selectedRow = DgvCursos.Rows(e.RowIndex).Cells
+            IdCurso = CInt(selectedRow(0).Value)
+            If IdCurso <> 0 Then
+                CargarDatosCurso(IdCurso)
+                ActivarControlesCursos(False)
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub BtnEliminarEstudios_Click(sender As Object, e As EventArgs) Handles BtnEliminarEstudios.Click
