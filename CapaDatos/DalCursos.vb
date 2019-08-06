@@ -244,4 +244,43 @@ Public Class DalCursos
         End Using
     End Function
 
+    ''' <summary>
+    ''' Elimina todos los cursos pertenecientes al docente al ser este eliminado
+    ''' </summary>
+    ''' <param name="IdDocente">Id del docente</param>
+    ''' <returns>True o False</returns>
+    Public Function EliminarCursosDocente(IdDocente As Int32) As Boolean
+
+        Sql.Clear()
+        Sql.Append("DELETE FROM CURSOS ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE")
+
+        Using Conexion As New FbConnection
+            Conexion.ConnectionString = My.Settings.cadenaConexion
+            Dim transaccion As FbTransaction
+            Conexion.Open()
+            transaccion = Conexion.BeginTransaction
+            Dim command As New FbCommand With {
+                    .CommandText = Sql.ToString,
+                    .Connection = Conexion,
+                    .Transaction = transaccion
+                }
+            Try
+                command.Parameters.AddWithValue("@ID_DOCENTE", IdDocente)
+                Dim respuesta = command.ExecuteNonQuery()
+
+                transaccion.Commit()
+                command.Dispose()
+                If respuesta > 0 Then
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                transaccion.Rollback()
+                Throw New Exception
+            End Try
+        End Using
+    End Function
 End Class

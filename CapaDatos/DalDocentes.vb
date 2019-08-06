@@ -316,6 +316,12 @@ Public Class DalDocentes
 
                 transaccion.Commit()
                 command.Dispose()
+
+                Dim objEstudios As New DalEstudios
+                objEstudios.EliminarEstudiosDoncente(IdDocente)
+                Dim objCursos As New DalCursos
+                objCursos.EliminarCursosDocente(IdDocente)
+
                 If respuesta > 0 Then
                     Return True
                 Else
