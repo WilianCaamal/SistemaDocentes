@@ -77,6 +77,7 @@ Public Class FrmListaDocentes
         DgvDocentes.Columns.Item("Area").Visible = False
         DgvDocentes.Columns.Item("Grado").Visible = False
         DgvDocentes.Columns.Item("Idiomas").Visible = False
+        DgvDocentes.Columns.Item("Foto").Visible = False
     End Sub
 
     Private Sub DgvDocentes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvDocentes.CellContentClick

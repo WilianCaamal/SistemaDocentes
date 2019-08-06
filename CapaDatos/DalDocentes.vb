@@ -91,6 +91,14 @@ Public Class DalDocentes
                     objDocente.Area = dr.GetString(16)
                     objDocente.Grado = dr.GetString(17)
                     objDocente.Idiomas = dr.GetString(18)
+
+                    Dim img = dr.GetValue(19)
+                    'img = dr.GetValue(19)
+                    Console.WriteLine("||||||||||||||||")
+                    Console.WriteLine(dr.GetValue(19))
+                    If Not (dr.GetValue(19).Equals(DBNull.Value)) Then
+                        objDocente.Foto = dr.GetValue(19)
+                    End If
                 End While
                 dr.Close()
                 command.Dispose()
@@ -128,7 +136,8 @@ Public Class DalDocentes
         Sql.Append("POSTGRADO, ")
         Sql.Append("AREA, ")
         Sql.Append("GRADO, ")
-        Sql.Append("IDIOMAS")
+        Sql.Append("IDIOMAS, ")
+        Sql.Append("FOTO")
         Sql.Append(")")
         Sql.Append("VALUES ")
         Sql.Append("(")
@@ -149,7 +158,8 @@ Public Class DalDocentes
         Sql.Append("@POSTGRADO,")
         Sql.Append("@AREA,")
         Sql.Append("@GRADO,")
-        Sql.Append("@IDIOMAS")
+        Sql.Append("@IDIOMAS, ")
+        Sql.Append("@FOTO")
         Sql.Append(")")
 
         Using Conexion As New FbConnection
@@ -181,6 +191,7 @@ Public Class DalDocentes
                 command.Parameters.AddWithValue("@AREA", objDocente.Area)
                 command.Parameters.AddWithValue("@GRADO", objDocente.Grado)
                 command.Parameters.AddWithValue("@IDIOMAS", objDocente.Idiomas)
+                command.Parameters.AddWithValue("@FOTO", objDocente.Foto)
 
                 Dim respuesta = command.ExecuteNonQuery()
 
@@ -224,7 +235,8 @@ Public Class DalDocentes
         Sql.Append("POSTGRADO = @POSTGRADO,")
         Sql.Append("AREA = @AREA,")
         Sql.Append("GRADO = @GRADO,")
-        Sql.Append("IDIOMAS = @IDIOMAS ")
+        Sql.Append("IDIOMAS = @IDIOMAS, ")
+        Sql.Append("FOTO = @FOTO ")
         Sql.Append("WHERE ")
         Sql.Append("ID_DOCENTE = @ID_DOCENTE")
 
@@ -257,6 +269,7 @@ Public Class DalDocentes
                 command.Parameters.AddWithValue("@AREA", objDocente.Area)
                 command.Parameters.AddWithValue("@GRADO", objDocente.Grado)
                 command.Parameters.AddWithValue("@IDIOMAS", objDocente.Idiomas)
+                command.Parameters.AddWithValue("@FOTO", objDocente.Foto)
                 command.Parameters.AddWithValue("@ID_DOCENTE", objDocente.IdDocente)
 
                 Dim respuesta = command.ExecuteNonQuery()

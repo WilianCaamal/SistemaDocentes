@@ -1,5 +1,6 @@
 ﻿Imports Entidades
 Imports CapaNegocios
+Imports System.IO
 
 Public Class FrmDocente
     Dim objEstados As New LbEstados
@@ -46,12 +47,15 @@ Public Class FrmDocente
         CboArea.Enabled = active
         CboGrado.Enabled = active
         DtFechaIngreso.Enabled = active
+
+        Button1.Enabled = active
     End Sub
 
     Private Sub FrmDocente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarEstados()
         CboGenero.SelectedIndex = 0
         If IsNew Then
+            PbFoto.BackgroundImage = My.Resources.ResourceImages48px.gender_neutral_user_96px
             ActivarControles(IsNew)
             BtnEliminar.Enabled = Not IsNew
             BtnEditar.Enabled = Not IsNew
@@ -89,6 +93,12 @@ Public Class FrmDocente
             .Grado = CboGrado.Text.Trim,
             .Idiomas = TxtIdiomas.Text.Trim
         }
+        If (PbFoto.Image IsNot Nothing) Then
+            Dim img As New Bitmap(PbFoto.Image)
+            Dim stream As New MemoryStream
+            img.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg)
+            objDocente.Foto = stream.GetBuffer
+        End If
         Return objDocente
     End Function
 
@@ -168,5 +178,19 @@ Public Class FrmDocente
         CboArea.Text = objDocente.Area
         CboGrado.Text = objDocente.Grado
         TxtIdiomas.Text = objDocente.Idiomas
+
+        If objDocente.Foto IsNot Nothing Then
+            Dim photo As New Bitmap(New MemoryStream(objDocente.Foto))
+            PbFoto.Image = photo
+        Else
+            PbFoto.BackgroundImage = My.Resources.ResourceImages48px.gender_neutral_user_96px
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        OfdFoto.ShowDialog()
+        Dim file As New Bitmap(OfdFoto.FileName)
+
+        PbFoto.Image = file
     End Sub
 End Class
