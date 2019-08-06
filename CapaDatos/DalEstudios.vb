@@ -1,26 +1,29 @@
-﻿Imports Entidades
+﻿Imports System.Text
+Imports Entidades
 Imports FirebirdSql.Data.FirebirdClient
 
 Public Class DalEstudios
-    Private ReadOnly SqlEstudios = "SELECT * FROM ESTUDIOS WHERE ID_DOCENTE = @ID_DOCENTE"
-    Private ReadOnly SqlEstudioAdd = "INSERT INTO ESTUDIOS " +
-        "(ID_DOCENTE,NOMBRE_ESTUDIO,FECHA_ESTUDIO,EXP_PROFESIONAL,DESCRIPCION_PROFESIONAL,TIEMPO_EXP_PROFESIONAL,EXP_DOCENTE,DESCRIPCION_DOCENTE,TIEMPO_EXP_DOCENTE)" +
-        " VALUES " +
-        "(@ID_DOCENTE,@NOMBRE,@FECHA_EST,@EXP_PRO,@DESC_PRO,@TIEMPO_PRO,@EXP_DOC,@DESC_DOC,@TIEMPO_DOC)"
-    Private ReadOnly SqlEstudioEdit = "UPDATE ESTUDIOS SET " +
-        "ID_DOCENTE = @ID_DOCENTE,NOMBRE_ESTUDIO = @NOMBRE ,FECHA_ESTUDIO = @FECHA_EST,EXP_PROFESIONAL = @EXP_PRO, " +
-        "DESCRIPCION_PROFESIONAL = @DESC_PRO,TIEMPO_EXP_PROFESIONAL = @TIEMPO_PRO,EXP_DOCENTE = @EXP_DOC, " +
-        "DESCRIPCION_DOCENTE = @DESC_DOC,TIEMPO_EXP_DOCENTE = @TIEMPO_DOC " +
-        "WHERE ID_ESTUDIO = @ID_ESTUDIO "
-    Private ReadOnly SqlEstidioById = "SELECT * FROM ESTUDIOS WHERE ID_ESTUDIO = @ID_ESTUDIO"
+    Private Sql As New StringBuilder
+
     Private listaEstudios As New List(Of Estudio)
 
+    ''' <summary>
+    ''' Lista de estudios por docente
+    ''' </summary>
+    ''' <param name="IdDocente">Id del Docente</param>
+    ''' <returns>List Type Estudio</returns>
     Function ListarEstudios(IdDocente As Int32) As List(Of Estudio)
+
+        Sql.Clear()
+        Sql.Append("SELECT * FROM ESTUDIOS ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE")
+
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion
             conexion.Open()
             Dim command As New FbCommand With {
-                    .CommandText = SqlEstudios,
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
             Try
@@ -50,10 +53,42 @@ Public Class DalEstudios
                 Throw New Exception(ex.Message)
             End Try
         End Using
-        Return ListaEstudios
+        Return listaEstudios
     End Function
 
+    ''' <summary>
+    ''' Agrega un registro en estudios
+    ''' </summary>
+    ''' <param name="objEstudio">Object Type Estudio</param>
+    ''' <returns>True o False</returns>
     Function Agregar(objEstudio As Estudio) As Boolean
+
+        Sql.Clear()
+        Sql.Append("INSERT INTO ESTUDIOS ")
+        Sql.Append("(")
+        Sql.Append("ID_DOCENTE,")
+        Sql.Append("NOMBRE_ESTUDIO,")
+        Sql.Append("FECHA_ESTUDIO,")
+        Sql.Append("EXP_PROFESIONAL,")
+        Sql.Append("DESCRIPCION_PROFESIONAL,")
+        Sql.Append("TIEMPO_EXP_PROFESIONAL,")
+        Sql.Append("EXP_DOCENTE,")
+        Sql.Append("DESCRIPCION_DOCENTE,")
+        Sql.Append("TIEMPO_EXP_DOCENTE")
+        Sql.Append(")")
+        Sql.Append(" VALUES ")
+        Sql.Append("(")
+        Sql.Append("@ID_DOCENTE,")
+        Sql.Append("@NOMBRE,")
+        Sql.Append("@FECHA_EST,")
+        Sql.Append("@EXP_PRO,")
+        Sql.Append("@DESC_PRO,")
+        Sql.Append("@TIEMPO_PRO,")
+        Sql.Append("@EXP_DOC,")
+        Sql.Append("@DESC_DOC,")
+        Sql.Append("@TIEMPO_DOC")
+        Sql.Append(")")
+
         Dim resultado As Boolean
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
@@ -61,7 +96,7 @@ Public Class DalEstudios
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlEstudioAdd,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
@@ -92,13 +127,24 @@ Public Class DalEstudios
         Return resultado
     End Function
 
+    ''' <summary>
+    ''' Obtiene un registro de un estudio
+    ''' </summary>
+    ''' <param name="IdEstudio">Id del estudio a consultar</param>
+    ''' <returns>True o False</returns>
     Function GetEstudioById(IdEstudio As Int32) As Estudio
+
+        Sql.Clear()
+        Sql.Append("SELECT * FROM ESTUDIOS")
+        Sql.Append(" WHERE ")
+        Sql.Append("ID_ESTUDIO = @ID_ESTUDIO")
+
         Dim objEstudio As New Estudio
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion
             conexion.Open()
             Dim command As New FbCommand With {
-                    .CommandText = SqlEstidioById,
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
             Try
@@ -128,7 +174,27 @@ Public Class DalEstudios
         Return objEstudio
     End Function
 
+    ''' <summary>
+    ''' Editar un registro de estudio
+    ''' </summary>
+    ''' <param name="objEstudio">Object Type Estudio</param>
+    ''' <returns>True o False</returns>
     Function Editar(objEstudio As Estudio) As Boolean
+
+        Sql.Clear()
+        Sql.Append("UPDATE ESTUDIOS SET ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE,")
+        Sql.Append("NOMBRE_ESTUDIO = @NOMBRE,")
+        Sql.Append("FECHA_ESTUDIO = @FECHA_EST,")
+        Sql.Append("EXP_PROFESIONAL = @EXP_PRO,")
+        Sql.Append("DESCRIPCION_PROFESIONAL = @DESC_PRO,")
+        Sql.Append("TIEMPO_EXP_PROFESIONAL = @TIEMPO_PRO,")
+        Sql.Append("EXP_DOCENTE = @EXP_DOC,")
+        Sql.Append("DESCRIPCION_DOCENTE = @DESC_DOC,")
+        Sql.Append("TIEMPO_EXP_DOCENTE = @TIEMPO_DOC")
+        Sql.Append(" WHERE ")
+        Sql.Append("ID_ESTUDIO = @ID_ESTUDIO")
+
         Dim resultado As Boolean
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
@@ -136,7 +202,7 @@ Public Class DalEstudios
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlEstudioEdit,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
