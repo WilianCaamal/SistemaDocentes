@@ -1,4 +1,5 @@
-﻿Imports CapaNegocios
+﻿Imports System.Text
+Imports CapaNegocios
 Imports DevExpress.XtraReports.UI
 Imports Entidades
 
@@ -57,6 +58,7 @@ Public Class FrmListaDocentes
     End Sub
 
     Private Sub FrmListaDocentes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CargarConexion()
         resultado = DialogResult.No
         CargarDocentes()
     End Sub
@@ -110,5 +112,20 @@ Public Class FrmListaDocentes
 
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
 
+    End Sub
+
+    Private Sub CargarConexion()
+        Dim SqlConnection As New StringBuilder
+        SqlConnection.Clear()
+        SqlConnection.Append(My.Settings.Usuario)
+        SqlConnection.Append(My.Settings.Contrasena)
+        SqlConnection.Append(Application.StartupPath + "\\DB\\SISTEMADOCENTES.FDB;")
+        My.Settings.PathBD = Application.StartupPath + "\\DB\\SISTEMADOCENTES.FDB;"
+        My.Settings.Save()
+        SqlConnection.Append(My.Settings.DataSource)
+        SqlConnection.Append(My.Settings.Port)
+        SqlConnection.Append(My.Settings.Extras)
+        Dim objConexion As New LbConexion
+        objConexion.GuardarConexion(SqlConnection.ToString)
     End Sub
 End Class

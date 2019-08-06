@@ -1,6 +1,14 @@
 ﻿Imports FirebirdSql.Data.FirebirdClient
 
 Public Class DalConexion
+
+    Public Sub GuardarConexion(StringConnection As String)
+        If My.Settings.cadenaConexion = Nothing Then
+            My.Settings.cadenaConexion = StringConnection
+            My.Settings.Save()
+        End If
+    End Sub
+
     Shared Sub Conexion()
         Dim cadenaConexion As String
         cadenaConexion =
