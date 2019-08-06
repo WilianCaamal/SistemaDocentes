@@ -18,4 +18,8 @@ Public Class LbEstudios
         Return objEstudios.Editar(objEstudio)
     End Function
 
+    Public Function Eliminar(Id As Int32)
+        Return objEstudios.Eliminar(Id)
+    End Function
+
 End Class

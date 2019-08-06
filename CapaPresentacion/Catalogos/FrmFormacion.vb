@@ -330,4 +330,14 @@ Public Class FrmFormacion
             ActivarControlesCursos(False)
         End If
     End Sub
+
+    Private Sub BtnEliminarEstudios_Click(sender As Object, e As EventArgs) Handles BtnEliminarEstudios.Click
+        Dim eliminar As DialogResult
+        eliminar = MessageBox.Show("Desea eliminar el estudio", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If eliminar = DialogResult.Yes Then
+            objEstudios.Eliminar(IdEstudio)
+            MessageBox.Show("Se ha eliminado el estudio", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ListarEstudios()
+        End If
+    End Sub
 End Class

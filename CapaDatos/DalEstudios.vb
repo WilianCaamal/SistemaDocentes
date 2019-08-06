@@ -233,4 +233,44 @@ Public Class DalEstudios
         Return resultado
     End Function
 
+    ''' <summary>
+    ''' Elimina un registro de estudio
+    ''' </summary>
+    ''' <param name="IdDocente">ID del estudio a eliminar</param>
+    ''' <returns>True o False</returns>
+    Public Function Eliminar(IdEstudio As Int32) As Boolean
+
+        Sql.Clear()
+        Sql.Append("DELETE FROM ESTUDIOS ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_ESTUDIO = @ID_ESTUDIO")
+
+        Using Conexion As New FbConnection
+            Conexion.ConnectionString = My.Settings.cadenaConexion
+            Dim transaccion As FbTransaction
+            Conexion.Open()
+            transaccion = Conexion.BeginTransaction
+            Dim command As New FbCommand With {
+                    .CommandText = Sql.ToString,
+                    .Connection = Conexion,
+                    .Transaction = transaccion
+                }
+            Try
+                command.Parameters.AddWithValue("@ID_ESTUDIO", IdEstudio)
+                Dim respuesta = command.ExecuteNonQuery()
+
+                transaccion.Commit()
+                command.Dispose()
+                If respuesta > 0 Then
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                transaccion.Rollback()
+                Throw New Exception
+            End Try
+        End Using
+    End Function
+
 End Class
