@@ -1,4 +1,5 @@
 ﻿Imports CapaNegocios
+Imports DevExpress.XtraReports.UI
 Imports Entidades
 
 Public Class FrmListaDocentes
@@ -105,5 +106,9 @@ Public Class FrmListaDocentes
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
+
     End Sub
 End Class
