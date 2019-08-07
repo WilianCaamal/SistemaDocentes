@@ -4,6 +4,7 @@ Imports FirebirdSql.Data.FirebirdClient
 Public Class DalMunicipios
     Private ReadOnly SqlMunicipios = "SELECT ID,NOMBRE FROM MUNICIPIOS ORDER BY ID"
     Private ReadOnly SqlMunicipiosByIdEstado = "SELECT ID,NOMBRE FROM MUNICIPIOS WHERE ID_ESTADO = {0} ORDER BY ID"
+    Private ReadOnly SqlMunicipiosById = "SELECT ID,NOMBRE FROM MUNICIPIOS WHERE ID = @ID"
     Private ListaMunicipios As New List(Of Municipio)
 
     Public Function ListarMunicipios() As List(Of Municipio)
@@ -73,5 +74,33 @@ Public Class DalMunicipios
             End Try
         End Using
         Return ListaMunicipios
+    End Function
+
+    Public Function MunicipioById(IdMunicipio) As Municipio
+        Dim objMunicipio As New Municipio
+        Using conexion As New FbConnection
+            conexion.ConnectionString = My.Settings.cadenaConexion
+            conexion.Open()
+            Dim command As New FbCommand With {
+                    .CommandText = SqlMunicipiosById,
+                    .Connection = conexion
+                }
+            Try
+                command.Parameters.AddWithValue("@ID", IdMunicipio)
+                Dim dr As FbDataReader
+                dr = command.ExecuteReader()
+
+                While dr.Read
+                    Console.WriteLine(dr)
+                    objMunicipio.Id = dr.GetInt32(0)
+                    objMunicipio.Nombre = dr.GetString(1)
+                End While
+                dr.Close()
+                command.Dispose()
+            Catch ex As Exception
+                Throw New Exception(ex.Message)
+            End Try
+        End Using
+        Return objMunicipio
     End Function
 End Class

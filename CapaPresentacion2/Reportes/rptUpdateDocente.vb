@@ -12,6 +12,8 @@ Public Class rptUpdateDocente
 
     Private Sub rptUpdateDocente_BeforePrint(sender As Object, e As Printing.PrintEventArgs) Handles MyBase.BeforePrint
         objDocente = objLbDocente.GetDocenteById(IdDocente)
+        objEstado = objLbEstado.EstadoById(objDocente.IdEstado)
+        objMunicipio = objLbMunicipio.MunicipioById(objDocente.IdCiudad)
 
         NombreDocente.Value = objDocente.Nombres + " " + objDocente.Apellidos
         Nombres.Value = objDocente.Nombres
@@ -28,8 +30,15 @@ Public Class rptUpdateDocente
         FechaIngreso.Value = objDocente.FechaIngreso
         Perfil.Value = objDocente.Perfil
         Postgrado.Value = objDocente.Postgrado
+        Ciudad.Value = objMunicipio.Nombre
+        Estado.Value = objEstado.Nombre
         Area.Value = objDocente.Area
         GradoAcademico.Value = objDocente.Grado
         Idiomas.Value = objDocente.Idiomas
+        Dim edadAnio = (DateTime.Now.Year - objDocente.FechaNacimiento.Year).ToString + "Años, "
+        Dim edadMeses = (DateTime.Now.Month - objDocente.FechaNacimiento.Month).ToString + "Meses, "
+        Dim edadDias = (DateTime.Now.Day - objDocente.FechaNacimiento.Day).ToString + "Dias."
+        EdadActual.Value = edadAnio + edadMeses + edadDias
+        'AniosServicio
     End Sub
 End Class
