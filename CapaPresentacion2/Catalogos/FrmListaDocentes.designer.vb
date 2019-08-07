@@ -27,10 +27,12 @@ Partial Class FrmListaDocentes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.BtnFormacion = New System.Windows.Forms.Button()
-        Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.BtnBuscar = New System.Windows.Forms.Button()
+        Me.TxtBusqueda = New System.Windows.Forms.TextBox()
         CType(Me.DgvDocentes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -100,18 +102,6 @@ Partial Class FrmListaDocentes
         Me.BtnFormacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnFormacion.UseVisualStyleBackColor = True
         '
-        'BtnBuscar
-        '
-        Me.BtnBuscar.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.search_24px
-        Me.BtnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnBuscar.Location = New System.Drawing.Point(628, 71)
-        Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(5)
-        Me.BtnBuscar.Name = "BtnBuscar"
-        Me.BtnBuscar.Size = New System.Drawing.Size(85, 30)
-        Me.BtnBuscar.TabIndex = 1
-        Me.BtnBuscar.Text = "      Buscar"
-        Me.BtnBuscar.UseVisualStyleBackColor = True
-        '
         'BtnNuevo
         '
         Me.BtnNuevo.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.add_24px
@@ -141,18 +131,48 @@ Partial Class FrmListaDocentes
         'BackgroundWorker1
         '
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(415, 80)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(43, 13)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Buscar:"
+        '
+        'BtnBuscar
+        '
+        Me.BtnBuscar.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.search_24px
+        Me.BtnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnBuscar.Location = New System.Drawing.Point(630, 71)
+        Me.BtnBuscar.Name = "BtnBuscar"
+        Me.BtnBuscar.Size = New System.Drawing.Size(85, 30)
+        Me.BtnBuscar.TabIndex = 10
+        Me.BtnBuscar.Text = "     Buscar"
+        Me.BtnBuscar.UseVisualStyleBackColor = True
+        '
+        'TxtBusqueda
+        '
+        Me.TxtBusqueda.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtBusqueda.Location = New System.Drawing.Point(464, 77)
+        Me.TxtBusqueda.Name = "TxtBusqueda"
+        Me.TxtBusqueda.Size = New System.Drawing.Size(160, 20)
+        Me.TxtBusqueda.TabIndex = 11
+        '
         'FrmListaDocentes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(727, 345)
+        Me.Controls.Add(Me.TxtBusqueda)
+        Me.Controls.Add(Me.BtnBuscar)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ProgressPanel1)
         Me.Controls.Add(Me.BtnReporte)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DgvDocentes)
         Me.Controls.Add(Me.BtnCerrar)
         Me.Controls.Add(Me.BtnFormacion)
-        Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnNuevo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmListaDocentes"
@@ -160,11 +180,11 @@ Partial Class FrmListaDocentes
         Me.Text = "Docentes"
         CType(Me.DgvDocentes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnNuevo As Button
-    Friend WithEvents BtnBuscar As Button
     Friend WithEvents BtnFormacion As Button
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents DgvDocentes As DataGridView
@@ -172,4 +192,7 @@ Partial Class FrmListaDocentes
     Friend WithEvents BtnReporte As Button
     Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Label2 As Label
+    Friend WithEvents BtnBuscar As Button
+    Friend WithEvents TxtBusqueda As TextBox
 End Class
