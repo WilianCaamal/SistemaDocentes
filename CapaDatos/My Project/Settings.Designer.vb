@@ -57,7 +57,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("User=SYSDBA;Password=masterkey;Database=C:\\Users\\wilia\\Documents\\Visual Studi"& _ 
-            "o 2017\\Projects\\SistemaDocentes\\CapaPresentacion2\\bin\\Debug\\DB\\SISTEMADOC"& _ 
+            "o 2017\\Projects\\SistemaDocentes\\CapaPresentacion2\\bin\\Debug\\BD\\SISTEMADOC"& _ 
             "ENTES2.FDB;DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connectio"& _ 
             "n lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerT"& _ 
             "ype=0")>  _
