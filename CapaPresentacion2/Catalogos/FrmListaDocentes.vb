@@ -133,4 +133,21 @@ Public Class FrmListaDocentes
         Dim objConexion As New LbConexion
         objConexion.GuardarConexion(SqlConnection.ToString)
     End Sub
+
+    Private Sub BtnReporte_Click(sender As Object, e As EventArgs) Handles BtnReporte.Click
+        ProgressPanel1.Visible = True
+        BackgroundWorker1.RunWorkerAsync()
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+
+        Dim report As New rptUpdateDocente
+        report.IdDocente = IdDocente
+        Dim reportTool As New ReportPrintTool(report)
+        reportTool.ShowPreviewDialog()
+    End Sub
+
+    Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
+        ProgressPanel1.Visible = False
+    End Sub
 End Class

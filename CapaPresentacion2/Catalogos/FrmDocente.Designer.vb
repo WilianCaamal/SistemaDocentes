@@ -25,7 +25,6 @@ Partial Class FrmDocente
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.PbFoto = New System.Windows.Forms.PictureBox()
         Me.TxtEmail = New System.Windows.Forms.TextBox()
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.TxtCp = New System.Windows.Forms.TextBox()
@@ -63,15 +62,16 @@ Partial Class FrmDocente
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TxtPlaza = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.OfdFoto = New System.Windows.Forms.OpenFileDialog()
         Me.BtnSalir = New System.Windows.Forms.Button()
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
+        Me.PbFoto = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.OfdFoto = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -127,17 +127,6 @@ Partial Class FrmDocente
         Me.Label13.Size = New System.Drawing.Size(56, 13)
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "Fotografía"
-        '
-        'PbFoto
-        '
-        Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PbFoto.Location = New System.Drawing.Point(552, 32)
-        Me.PbFoto.Name = "PbFoto"
-        Me.PbFoto.Size = New System.Drawing.Size(113, 123)
-        Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PbFoto.TabIndex = 22
-        Me.PbFoto.TabStop = False
         '
         'TxtEmail
         '
@@ -475,6 +464,12 @@ Partial Class FrmDocente
         Me.Label14.Tag = ""
         Me.Label14.Text = "Clave(plaza):"
         '
+        'OfdFoto
+        '
+        Me.OfdFoto.FileName = "Fotografia"
+        Me.OfdFoto.Filter = "Imagenes|*.jpg|Todos los archivos|*.*"
+        Me.OfdFoto.Title = "Fotografía"
+        '
         'BtnSalir
         '
         Me.BtnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -522,6 +517,17 @@ Partial Class FrmDocente
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
+        'PbFoto
+        '
+        Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PbFoto.Location = New System.Drawing.Point(552, 32)
+        Me.PbFoto.Name = "PbFoto"
+        Me.PbFoto.Size = New System.Drawing.Size(113, 123)
+        Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PbFoto.TabIndex = 22
+        Me.PbFoto.TabStop = False
+        '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -533,12 +539,6 @@ Partial Class FrmDocente
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Docente"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'OfdFoto
-        '
-        Me.OfdFoto.FileName = "Fotografia"
-        Me.OfdFoto.Filter = "Imagenes|*.jpg|Todos los archivos|*.*"
-        Me.OfdFoto.Title = "Fotografía"
         '
         'FrmDocente
         '
@@ -559,9 +559,9 @@ Partial Class FrmDocente
         Me.Text = "Formulario docente"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

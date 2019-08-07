@@ -211,6 +211,7 @@
     <None Include="Resources\add_24px.png" />
     <None Include="Resources\administrator_female_48px.png" />
     <None Include="Resources\business_contact_48px.png" />
+    <None Include="Resources\overview_pages_2_24px.png" />
     <Content Include="Resources\person_male_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

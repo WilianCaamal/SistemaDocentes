@@ -23,11 +23,14 @@ Partial Class FrmListaDocentes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DgvDocentes = New System.Windows.Forms.DataGridView()
+        Me.BtnReporte = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.BtnFormacion = New System.Windows.Forms.Button()
         Me.BtnBuscar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         CType(Me.DgvDocentes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -46,6 +49,19 @@ Partial Class FrmListaDocentes
         Me.DgvDocentes.ShowEditingIcon = False
         Me.DgvDocentes.Size = New System.Drawing.Size(703, 213)
         Me.DgvDocentes.TabIndex = 4
+        '
+        'BtnReporte
+        '
+        Me.BtnReporte.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.overview_pages_2_24px
+        Me.BtnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnReporte.Location = New System.Drawing.Point(628, 71)
+        Me.BtnReporte.Margin = New System.Windows.Forms.Padding(5)
+        Me.BtnReporte.Name = "BtnReporte"
+        Me.BtnReporte.Size = New System.Drawing.Size(85, 30)
+        Me.BtnReporte.TabIndex = 6
+        Me.BtnReporte.Text = "Reporte"
+        Me.BtnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnReporte.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -108,11 +124,30 @@ Partial Class FrmListaDocentes
         Me.BtnNuevo.Text = "       Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.BarAnimationElementThickness = 2
+        Me.ProgressPanel1.Caption = "Espere por favor"
+        Me.ProgressPanel1.Description = "Cargando ..."
+        Me.ProgressPanel1.Location = New System.Drawing.Point(251, 157)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(246, 66)
+        Me.ProgressPanel1.TabIndex = 7
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        Me.ProgressPanel1.Visible = False
+        '
+        'BackgroundWorker1
+        '
+        '
         'FrmListaDocentes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(727, 345)
+        Me.Controls.Add(Me.ProgressPanel1)
+        Me.Controls.Add(Me.BtnReporte)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DgvDocentes)
         Me.Controls.Add(Me.BtnCerrar)
@@ -134,4 +169,7 @@ Partial Class FrmListaDocentes
     Friend WithEvents BtnCerrar As Button
     Friend WithEvents DgvDocentes As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents BtnReporte As Button
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class
