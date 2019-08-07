@@ -25,7 +25,7 @@ Partial Class FrmDocente
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PbFoto = New System.Windows.Forms.PictureBox()
         Me.TxtEmail = New System.Windows.Forms.TextBox()
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.TxtCp = New System.Windows.Forms.TextBox()
@@ -68,8 +68,9 @@ Partial Class FrmDocente
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.OfdFoto = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -79,7 +80,7 @@ Partial Class FrmDocente
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.PictureBox1)
+        Me.GroupBox1.Controls.Add(Me.PbFoto)
         Me.GroupBox1.Controls.Add(Me.TxtEmail)
         Me.GroupBox1.Controls.Add(Me.TxtTelefono)
         Me.GroupBox1.Controls.Add(Me.TxtCp)
@@ -127,14 +128,16 @@ Partial Class FrmDocente
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "Fotografía"
         '
-        'PictureBox1
+        'PbFoto
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(556, 62)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(110, 110)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 22
-        Me.PictureBox1.TabStop = False
+        Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PbFoto.Location = New System.Drawing.Point(552, 62)
+        Me.PbFoto.Name = "PbFoto"
+        Me.PbFoto.Size = New System.Drawing.Size(113, 123)
+        Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PbFoto.TabIndex = 22
+        Me.PbFoto.TabStop = False
         '
         'TxtEmail
         '
@@ -527,6 +530,12 @@ Partial Class FrmDocente
         Me.Label1.Text = "Docente"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'OfdFoto
+        '
+        Me.OfdFoto.FileName = "Fotografia"
+        Me.OfdFoto.Filter = "Imagenes|*.jpg|Todos los archivos|*.*"
+        Me.OfdFoto.Title = "Fotografía"
+        '
         'FrmDocente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -546,7 +555,7 @@ Partial Class FrmDocente
         Me.Text = "Formulario docente"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
@@ -561,7 +570,7 @@ Partial Class FrmDocente
     Friend WithEvents BtnEliminar As Button
     Friend WithEvents BtnSalir As Button
     Friend WithEvents Label13 As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PbFoto As PictureBox
     Friend WithEvents TxtEmail As TextBox
     Friend WithEvents TxtTelefono As TextBox
     Friend WithEvents TxtCp As TextBox
@@ -599,4 +608,5 @@ Partial Class FrmDocente
     Friend WithEvents TxtPlaza As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents OfdFoto As OpenFileDialog
 End Class

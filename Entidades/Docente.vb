@@ -1,4 +1,6 @@
-﻿Public Class Docente
+﻿Imports System.IO
+
+Public Class Docente
     Property IdDocente As Int32
     Property Nombres As String
     Property Apellidos As String
@@ -18,6 +20,7 @@
     Property Area As String
     Property Grado As String
     Property Idiomas As String
+    Property Foto As Byte()
 
     Private edadDocente As Int32
     Property Edad As Int32

@@ -1,35 +1,26 @@
-﻿Imports Entidades
+﻿Imports System.Text
+Imports Entidades
 Imports FirebirdSql.Data.FirebirdClient
 
 Public Class DalDocentes
-    Private ReadOnly SqlDocentes = "SELECT ID_DOCENTE,NOMBRES,APELLIDOS,PERFIL AS PROFESION,FECHA_NACIMIENTO FROM DOCENTES"
-    Private ReadOnly SqlDocenteAdd = "INSERT INTO DOCENTES" +
-        " (NOMBRES,APELLIDOS,GENERO,FECHA_NACIMIENTO,CURP,DIRECCION,ID_ESTADO,ID_CIUDAD,CP,TELEFONO,EMAIL,PLAZA,FECHA_INGRESO,PERFIL,POSTGRADO,AREA,GRADO,IDIOMAS) " +
-        "VALUES" +
-        " (@NOMBRES,@APELLIDOS,@GENERO,@FECHA_NACIMIENTO,@CURP,@DIRECCION,@ID_ESTADO,@ID_CIUDAD,@CP,@TELEFONO,@EMAIL,@PLAZA,@FECHA_INGRESO,@PERFIL,@POSTGRADO,@AREA,@GRADO,@IDIOMAS) "
-    Private ReadOnly SqlDocenteEdit = "UPDATE DOCENTES SET" +
-        " NOMBRES = @NOMBRES,APELLIDOS = @APELLIDOS,GENERO = @GENERO,FECHA_NACIMIENTO = @FECHA_NACIMIENTO,CURP = @CURP," +
-        " DIRECCION = @DIRECCION,ID_ESTADO = @ID_ESTADO,ID_CIUDAD = @ID_CIUDAD,CP = @CP,TELEFONO = @TELEFONO,EMAIL = @EMAIL," +
-        " PLAZA = @PLAZA,FECHA_INGRESO = @FECHA_INGRESO,PERFIL = @PERFIL,POSTGRADO = @POSTGRADO,AREA = @AREA,GRADO = @GRADO,IDIOMAS = @IDIOMAS" +
-        " WHERE ID_DOCENTE = @ID_DOCENTE"
-    Private ReadOnly SqlDocenteEdit2 = "UPDATE DOCENTES SET" +
-        " NOMBRES = {0},APELLIDOS = {1},GENERO = {3},FECHA_NACIMIENTO = {4},CURP = {5}," +
-        " DIRECCION = {6},ID_ESTADO = {7},ID_CIUDAD = {8},CP = {9},TELEFONO = {10},EMAIL = {11}," +
-        " PLAZA = {12},FECHA_INGRESO = {13},PERFIL = {14},POSTGRADO = {15},AREA = {16},GRADO = {17},IDIOMAS = {18}" +
-        " WHERE ID_DOCENTE = {19}"
-    Private ReadOnly SqlDocenteById = "SELECT * FROM DOCENTES WHERE ID_DOCENTE = {0}"
-    Private ReadOnly SqlDocenteDelete = "DELETE FROM DOCENTES WHERE ID_DOCENTE = @ID_DOCENTE"
+    Private Sql As New StringBuilder
     Private ListaDocentes As New List(Of Docente)
 
+    ''' <summary>
+    ''' Lista de todos los docentes
+    ''' </summary>
+    ''' <returns>List Type Docente</returns>
     Public Function ListarDocentes() As List(Of Docente)
+        Sql.Clear()
+        Sql.Append("SELECT * FROM DOCENTES ORDER BY NOMBRES")
         Using conexion As New FbConnection
-            conexion.ConnectionString = My.Settings.cadenaConexion
-            conexion.Open()
-            Dim command As New FbCommand With {
-                    .CommandText = SqlDocentes,
+            conexion.ConnectionString = My.Settings.cadenaConexion.ToString
+            Try
+                conexion.Open()
+                Dim command As New FbCommand With {
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
-            Try
                 Dim dr As FbDataReader
                 dr = command.ExecuteReader()
 
@@ -44,25 +35,38 @@ Public Class DalDocentes
                     ListaDocentes.Add(objDocente)
                 End While
                 dr.Close()
-
+                conexion.Close()
                 command.Dispose()
             Catch ex As Exception
-                Throw New Exception(ex.Message)
+                conexion.Close()
             End Try
         End Using
         Return ListaDocentes
     End Function
 
-    Public Function GetDocenteById(Id As Int32) As Docente
+    ''' <summary>
+    ''' Obtiene los datos de un docente
+    ''' </summary>
+    ''' <param name="IdDocente">Id del docente a consultar</param>
+    ''' <returns>Object Type Docente</returns>
+    Public Function GetDocenteById(IdDocente As Int32) As Docente
+
+        Sql.Clear()
+        Sql.Append("SELECT * FROM DOCENTES ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE")
+
         Dim objDocente As New Docente
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion
             conexion.Open()
             Dim command As New FbCommand With {
-                    .CommandText = String.Format(SqlDocenteById, Id),
+                    .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
             Try
+
+                command.Parameters.AddWithValue("@ID_DOCENTE", IdDocente)
                 Dim dr As FbDataReader
                 dr = command.ExecuteReader()
 
@@ -88,6 +92,13 @@ Public Class DalDocentes
                     objDocente.Grado = dr.GetString(17)
                     objDocente.Idiomas = dr.GetString(18)
 
+                    Dim img = dr.GetValue(19)
+                    'img = dr.GetValue(19)
+                    Console.WriteLine("||||||||||||||||")
+                    Console.WriteLine(dr.GetValue(19))
+                    If Not (dr.GetValue(19).Equals(DBNull.Value)) Then
+                        objDocente.Foto = dr.GetValue(19)
+                    End If
                 End While
                 dr.Close()
                 command.Dispose()
@@ -98,14 +109,66 @@ Public Class DalDocentes
         Return objDocente
     End Function
 
+    ''' <summary>
+    ''' Agrega un registro en docentes
+    ''' </summary>
+    ''' <param name="objDocente">Object Type Docente</param>
+    ''' <returns>True o False</returns>
     Public Function Agregar(objDocente As Docente) As Boolean
+
+        Sql.Clear()
+        Sql.Append("INSERT INTO DOCENTES ")
+        Sql.Append("(")
+        Sql.Append("NOMBRES, ")
+        Sql.Append("APELLIDOS, ")
+        Sql.Append("GENERO, ")
+        Sql.Append("FECHA_NACIMIENTO, ")
+        Sql.Append("CURP, ")
+        Sql.Append("DIRECCION, ")
+        Sql.Append("ID_ESTADO, ")
+        Sql.Append("ID_CIUDAD, ")
+        Sql.Append("CP, ")
+        Sql.Append("TELEFONO, ")
+        Sql.Append("EMAIL, ")
+        Sql.Append("PLAZA, ")
+        Sql.Append("FECHA_INGRESO, ")
+        Sql.Append("PERFIL, ")
+        Sql.Append("POSTGRADO, ")
+        Sql.Append("AREA, ")
+        Sql.Append("GRADO, ")
+        Sql.Append("IDIOMAS, ")
+        Sql.Append("FOTO")
+        Sql.Append(")")
+        Sql.Append("VALUES ")
+        Sql.Append("(")
+        Sql.Append("@NOMBRES,")
+        Sql.Append("@APELLIDOS,")
+        Sql.Append("@GENERO,")
+        Sql.Append("@FECHA_NACIMIENTO,")
+        Sql.Append("@CURP,")
+        Sql.Append("@DIRECCION,")
+        Sql.Append("@ID_ESTADO,")
+        Sql.Append("@ID_CIUDAD,")
+        Sql.Append("@CP,")
+        Sql.Append("@TELEFONO,")
+        Sql.Append("@EMAIL,")
+        Sql.Append("@PLAZA,")
+        Sql.Append("@FECHA_INGRESO,")
+        Sql.Append("@PERFIL,")
+        Sql.Append("@POSTGRADO,")
+        Sql.Append("@AREA,")
+        Sql.Append("@GRADO,")
+        Sql.Append("@IDIOMAS, ")
+        Sql.Append("@FOTO")
+        Sql.Append(")")
+
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
             Dim transaccion As FbTransaction
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlDocenteAdd,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
@@ -128,6 +191,7 @@ Public Class DalDocentes
                 command.Parameters.AddWithValue("@AREA", objDocente.Area)
                 command.Parameters.AddWithValue("@GRADO", objDocente.Grado)
                 command.Parameters.AddWithValue("@IDIOMAS", objDocente.Idiomas)
+                command.Parameters.AddWithValue("@FOTO", objDocente.Foto)
 
                 Dim respuesta = command.ExecuteNonQuery()
 
@@ -145,14 +209,44 @@ Public Class DalDocentes
         End Using
     End Function
 
+    ''' <summary>
+    ''' Edita un registro de docentes
+    ''' </summary>
+    ''' <param name="objDocente">Object Type Docente</param>
+    ''' <returns>True o False</returns>
     Public Function Editar(objDocente As Docente) As Boolean
+
+        Sql.Clear()
+        Sql.Append("UPDATE DOCENTES SET ")
+        Sql.Append("NOMBRES = @NOMBRES,")
+        Sql.Append("APELLIDOS = @APELLIDOS,")
+        Sql.Append("GENERO = @GENERO,")
+        Sql.Append("FECHA_NACIMIENTO = @FECHA_NACIMIENTO,")
+        Sql.Append("CURP = @CURP,")
+        Sql.Append("DIRECCION = @DIRECCION,")
+        Sql.Append("ID_ESTADO = @ID_ESTADO,")
+        Sql.Append("ID_CIUDAD = @ID_CIUDAD,")
+        Sql.Append("CP = @CP,")
+        Sql.Append("TELEFONO = @TELEFONO,")
+        Sql.Append("EMAIL = @EMAIL,")
+        Sql.Append("PLAZA = @PLAZA,")
+        Sql.Append("FECHA_INGRESO = @FECHA_INGRESO,")
+        Sql.Append("PERFIL = @PERFIL,")
+        Sql.Append("POSTGRADO = @POSTGRADO,")
+        Sql.Append("AREA = @AREA,")
+        Sql.Append("GRADO = @GRADO,")
+        Sql.Append("IDIOMAS = @IDIOMAS, ")
+        Sql.Append("FOTO = @FOTO ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE")
+
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
             Dim transaccion As FbTransaction
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlDocenteEdit,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
@@ -175,6 +269,7 @@ Public Class DalDocentes
                 command.Parameters.AddWithValue("@AREA", objDocente.Area)
                 command.Parameters.AddWithValue("@GRADO", objDocente.Grado)
                 command.Parameters.AddWithValue("@IDIOMAS", objDocente.Idiomas)
+                command.Parameters.AddWithValue("@FOTO", objDocente.Foto)
                 command.Parameters.AddWithValue("@ID_DOCENTE", objDocente.IdDocente)
 
                 Dim respuesta = command.ExecuteNonQuery()
@@ -193,23 +288,40 @@ Public Class DalDocentes
         End Using
     End Function
 
-    Public Function Eliminar(Id As Int32) As Boolean
+    ''' <summary>
+    ''' Elimina un registro de docentes
+    ''' </summary>
+    ''' <param name="IdDocente">ID del docente a eliminar</param>
+    ''' <returns>True o False</returns>
+    Public Function Eliminar(IdDocente As Int32) As Boolean
+
+        Sql.Clear()
+        Sql.Append("DELETE FROM DOCENTES ")
+        Sql.Append("WHERE ")
+        Sql.Append("ID_DOCENTE = @ID_DOCENTE")
+
         Using Conexion As New FbConnection
             Conexion.ConnectionString = My.Settings.cadenaConexion
             Dim transaccion As FbTransaction
             Conexion.Open()
             transaccion = Conexion.BeginTransaction
             Dim command As New FbCommand With {
-                    .CommandText = SqlDocenteDelete,
+                    .CommandText = Sql.ToString,
                     .Connection = Conexion,
                     .Transaction = transaccion
                 }
             Try
-                command.Parameters.AddWithValue("@ID_DOCENTE", Id)
+                command.Parameters.AddWithValue("@ID_DOCENTE", IdDocente)
                 Dim respuesta = command.ExecuteNonQuery()
 
                 transaccion.Commit()
                 command.Dispose()
+
+                Dim objEstudios As New DalEstudios
+                objEstudios.EliminarEstudiosDoncente(IdDocente)
+                Dim objCursos As New DalCursos
+                objCursos.EliminarCursosDocente(IdDocente)
+
                 If respuesta > 0 Then
                     Return True
                 Else
@@ -221,4 +333,5 @@ Public Class DalDocentes
             End Try
         End Using
     End Function
+
 End Class

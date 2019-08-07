@@ -3,6 +3,7 @@ Imports FirebirdSql.Data.FirebirdClient
 
 Public Class DalEstados
     Private ReadOnly SqlEstados = "SELECT ID,NOMBRE FROM ESTADOS ORDER BY ID"
+    Private ReadOnly SqlEstadosById = "SELECT ID,NOMBRE FROM ESTADOS WHERE ID = @ID_ESTADO"
     Private ListaEstado As New List(Of Estado)
 
     Public Function ListarEstados() As List(Of Estado)
@@ -37,6 +38,35 @@ Public Class DalEstados
             End Try
         End Using
         Return ListaEstado
+    End Function
+
+    Public Function EstadoById(IdEstado As Int32) As Estado
+        Dim objEstado As New Estado
+        Using conexion As New FbConnection
+            conexion.ConnectionString = My.Settings.cadenaConexion
+            conexion.Open()
+            Dim command As New FbCommand With {
+                    .CommandText = SqlEstadosById,
+                    .Connection = conexion
+                }
+            Try
+
+                command.Parameters.AddWithValue("@ID_ESTADO", IdEstado)
+                Dim dr As FbDataReader
+                dr = command.ExecuteReader()
+
+                While dr.Read
+                    Console.WriteLine(dr)
+                    objEstado.Id = dr.GetInt32(0)
+                    objEstado.Nombre = dr.GetString(1)
+                End While
+                dr.Close()
+                command.Dispose()
+            Catch ex As Exception
+                Throw New Exception(ex.Message)
+            End Try
+        End Using
+        Return objEstado
     End Function
 
 End Class

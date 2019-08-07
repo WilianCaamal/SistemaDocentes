@@ -8,19 +8,19 @@ Public Class LbDocentes
         Return objDocentes.ListarDocentes()
     End Function
 
-    Public Function GetDocenteById(id As Int32)
+    Public Function GetDocenteById(id As Int32) As Docente
         Return objDocentes.GetDocenteById(id)
     End Function
 
-    Public Function Agregar(objDocente As Docente)
+    Public Function Agregar(objDocente As Docente) As Boolean
         Return objDocentes.Agregar(objDocente)
     End Function
 
-    Public Function Editar(objDocente As Docente)
+    Public Function Editar(objDocente As Docente) As Boolean
         Return objDocentes.Editar(objDocente)
     End Function
 
-    Public Function Eliminar(Id As Int32)
+    Public Function Eliminar(Id As Int32) As Boolean
         Return objDocentes.Eliminar(Id)
     End Function
 

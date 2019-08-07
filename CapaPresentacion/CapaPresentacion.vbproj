@@ -239,6 +239,9 @@
   <ItemGroup>
     <None Include="Resources\employee_card_24px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gender_neutral_user_96px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
