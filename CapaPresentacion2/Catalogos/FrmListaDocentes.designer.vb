@@ -54,7 +54,7 @@ Partial Class FrmListaDocentes
         '
         Me.BtnReporte.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.overview_pages_2_24px
         Me.BtnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnReporte.Location = New System.Drawing.Point(628, 71)
+        Me.BtnReporte.Location = New System.Drawing.Point(107, 71)
         Me.BtnReporte.Margin = New System.Windows.Forms.Padding(5)
         Me.BtnReporte.Name = "BtnReporte"
         Me.BtnReporte.Size = New System.Drawing.Size(85, 30)
@@ -104,7 +104,7 @@ Partial Class FrmListaDocentes
         '
         Me.BtnBuscar.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.search_24px
         Me.BtnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnBuscar.Location = New System.Drawing.Point(107, 71)
+        Me.BtnBuscar.Location = New System.Drawing.Point(628, 71)
         Me.BtnBuscar.Margin = New System.Windows.Forms.Padding(5)
         Me.BtnBuscar.Name = "BtnBuscar"
         Me.BtnBuscar.Size = New System.Drawing.Size(85, 30)
