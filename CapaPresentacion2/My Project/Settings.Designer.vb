@@ -91,7 +91,7 @@ Partial Friend NotInheritable Class Settings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("DataSource=localhost;")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("DataSource=127.0.0.1;")>  _
     Public Property DataSource() As String
         Get
             Return CType(Me("DataSource"),String)

@@ -14,13 +14,13 @@ Public Class DalDocentes
         Sql.Clear()
         Sql.Append("SELECT * FROM DOCENTES ORDER BY NOMBRES")
         Using conexion As New FbConnection
-            conexion.ConnectionString = My.Settings.cadenaConexion
-            conexion.Open()
-            Dim command As New FbCommand With {
+            conexion.ConnectionString = My.Settings.cadenaConexion.ToString
+            Try
+                conexion.Open()
+                Dim command As New FbCommand With {
                     .CommandText = Sql.ToString,
                     .Connection = conexion
                 }
-            Try
                 Dim dr As FbDataReader
                 dr = command.ExecuteReader()
 
@@ -35,10 +35,10 @@ Public Class DalDocentes
                     ListaDocentes.Add(objDocente)
                 End While
                 dr.Close()
-
+                conexion.Close()
                 command.Dispose()
             Catch ex As Exception
-                Throw New Exception(ex.Message)
+                conexion.Close()
             End Try
         End Using
         Return ListaDocentes

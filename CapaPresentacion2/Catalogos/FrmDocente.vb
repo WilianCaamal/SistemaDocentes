@@ -59,6 +59,7 @@ Public Class FrmDocente
             ActivarControles(IsNew)
             BtnEliminar.Enabled = Not IsNew
             BtnEditar.Enabled = Not IsNew
+            Label1.Image = My.Resources.ResourceImages48px.business_contact_48px
         Else
             CargarDatosDocente(IdDocente)
             ActivarControles(False)
@@ -80,8 +81,8 @@ Public Class FrmDocente
             .FechaNacimiento = DtFechaNacimiento.Value,
             .Curp = TxtCurp.Text.Trim,
             .Direccion = TxtDireccion.Text.Trim,
-            .IdEstado = CboEstado.SelectedIndex,
-            .IdCiudad = CboCiudad.SelectedIndex,
+            .IdEstado = CboEstado.SelectedIndex + 1,
+            .IdCiudad = CboCiudad.SelectedIndex + 1,
             .Cp = TxtCp.Text.Trim,
             .Telefono = TxtTelefono.Text.Trim,
             .Email = TxtEmail.Text.Trim,
@@ -110,10 +111,10 @@ Public Class FrmDocente
         CboEstado.DataSource = listaEstados
     End Sub
 
-    Private Sub CargarMunicipios()
+    Private Sub CargarMunicipios(IdEstado As Int32)
         listaMunicipios.Clear()
         CboCiudad.DataSource = Nothing
-        listaMunicipios = objMunicipios.MunicipiosByIdEstado(CboEstado.SelectedIndex)
+        listaMunicipios = objMunicipios.MunicipiosByIdEstado(IdEstado + 1)
         CboCiudad.DisplayMember = "Nombre"
         CboCiudad.ValueMember = "Id"
         CboCiudad.DataSource = listaMunicipios
@@ -140,7 +141,7 @@ Public Class FrmDocente
     End Sub
 
     Private Sub CboEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboEstado.SelectedIndexChanged
-        CargarMunicipios()
+        CargarMunicipios(CboEstado.SelectedIndex)
     End Sub
 
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles BtnEditar.Click
@@ -158,7 +159,9 @@ Public Class FrmDocente
         If objDocente.Genero = "Hombre" Then
             CboGenero.SelectedItem = 0
             CboGenero.SelectedIndex = 0
+            Label1.Image = My.Resources.ResourceImages48px.businessman_48px
         Else
+            Label1.Image = My.Resources.ResourceImages48px.administrator_female_48px
             CboGenero.SelectedIndex = 1
             CboGenero.SelectedItem = 1
         End If

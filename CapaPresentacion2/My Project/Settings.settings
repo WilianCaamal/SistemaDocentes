@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Password=masterkey;</Value>
     </Setting>
     <Setting Name="DataSource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DataSource=localhost;</Value>
+      <Value Profile="(Default)">DataSource=127.0.0.1;</Value>
     </Setting>
     <Setting Name="Port" Type="System.String" Scope="User">
       <Value Profile="(Default)">Port=3050;</Value>

@@ -16,6 +16,8 @@ Public Class FrmListaDocentes
         }
         resultado = frmDocente.ShowDialog()
         If resultado = DialogResult.Yes Then
+            BtnFormacion.Enabled = True
+            BtnBuscar.Enabled = True
             CargarDocentes()
         End If
     End Sub
@@ -50,6 +52,8 @@ Public Class FrmListaDocentes
                 Dim selectedRow = DgvDocentes.Rows(0).Cells
                 IdDocente = CInt(selectedRow(0).Value)
             Else
+                BtnBuscar.Enabled = False
+                BtnFormacion.Enabled = False
                 MessageBox.Show("Catalogo Vacio", "Listar Docentes", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -119,9 +123,10 @@ Public Class FrmListaDocentes
         SqlConnection.Clear()
         SqlConnection.Append(My.Settings.Usuario)
         SqlConnection.Append(My.Settings.Contrasena)
-        SqlConnection.Append(Application.StartupPath + "\\DB\\SISTEMADOCENTES.FDB;")
-        My.Settings.PathBD = Application.StartupPath + "\\DB\\SISTEMADOCENTES.FDB;"
+        Dim RUTA = "Database=" + Application.StartupPath + "\BD\SISTEMADOCENTES2.FDB;"
+        My.Settings.PathBD = "Database=" + Application.StartupPath + "\BD\SISTEMADOCENTES2.FDB;"
         My.Settings.Save()
+        SqlConnection.Append(My.Settings.PathBD)
         SqlConnection.Append(My.Settings.DataSource)
         SqlConnection.Append(My.Settings.Port)
         SqlConnection.Append(My.Settings.Extras)

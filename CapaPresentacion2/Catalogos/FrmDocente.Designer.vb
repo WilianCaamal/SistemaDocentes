@@ -112,7 +112,7 @@ Partial Class FrmDocente
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(571, 32)
+        Me.Button1.Location = New System.Drawing.Point(572, 161)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 24
@@ -132,7 +132,7 @@ Partial Class FrmDocente
         '
         Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PbFoto.Location = New System.Drawing.Point(552, 62)
+        Me.PbFoto.Location = New System.Drawing.Point(552, 32)
         Me.PbFoto.Name = "PbFoto"
         Me.PbFoto.Size = New System.Drawing.Size(113, 123)
         Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -181,6 +181,7 @@ Partial Class FrmDocente
         '
         'TxtDireccion
         '
+        Me.TxtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtDireccion.Location = New System.Drawing.Point(64, 104)
         Me.TxtDireccion.Name = "TxtDireccion"
         Me.TxtDireccion.Size = New System.Drawing.Size(200, 20)
@@ -188,6 +189,7 @@ Partial Class FrmDocente
         '
         'TxtCurp
         '
+        Me.TxtCurp.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtCurp.Location = New System.Drawing.Point(64, 156)
         Me.TxtCurp.MaxLength = 18
         Me.TxtCurp.Name = "TxtCurp"
@@ -217,6 +219,7 @@ Partial Class FrmDocente
         '
         'TxtApellidos
         '
+        Me.TxtApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtApellidos.Location = New System.Drawing.Point(64, 52)
         Me.TxtApellidos.Name = "TxtApellidos"
         Me.TxtApellidos.Size = New System.Drawing.Size(200, 20)
@@ -224,6 +227,7 @@ Partial Class FrmDocente
         '
         'TxtNombres
         '
+        Me.TxtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtNombres.Location = New System.Drawing.Point(64, 23)
         Me.TxtNombres.Name = "TxtNombres"
         Me.TxtNombres.Size = New System.Drawing.Size(200, 20)
