@@ -82,7 +82,7 @@ Public Class FrmDocente
             .Curp = TxtCurp.Text.Trim,
             .Direccion = TxtDireccion.Text.Trim,
             .IdEstado = CboEstado.SelectedIndex + 1,
-            .IdCiudad = CboCiudad.SelectedIndex + 1,
+            .IdCiudad = CboCiudad.SelectedValue,
             .Cp = TxtCp.Text.Trim,
             .Telefono = TxtTelefono.Text.Trim,
             .Email = TxtEmail.Text.Trim,

@@ -51,9 +51,17 @@ Public Class FrmListaDocentes
                 ConfigurarGrid()
                 Dim selectedRow = DgvDocentes.Rows(0).Cells
                 IdDocente = CInt(selectedRow(0).Value)
+                BtnBuscar.Enabled = True
+                BtnFormacion.Enabled = True
+                BtnBuscar.Enabled = True
+                TxtBusqueda.Enabled = True
+                BtnReporte.Enabled = True
             Else
                 BtnBuscar.Enabled = False
                 BtnFormacion.Enabled = False
+                BtnBuscar.Enabled = False
+                TxtBusqueda.Enabled = False
+                BtnReporte.Enabled = False
                 MessageBox.Show("Catalogo Vacio", "Listar Docentes", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -114,10 +122,6 @@ Public Class FrmListaDocentes
         End Try
     End Sub
 
-    Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
-
-    End Sub
-
     Private Sub CargarConexion()
         Dim SqlConnection As New StringBuilder
         SqlConnection.Clear()
@@ -136,6 +140,7 @@ Public Class FrmListaDocentes
 
     Private Sub BtnReporte_Click(sender As Object, e As EventArgs) Handles BtnReporte.Click
         ProgressPanel1.Visible = True
+        Enabled = False
         BackgroundWorker1.RunWorkerAsync()
     End Sub
 
@@ -144,10 +149,32 @@ Public Class FrmListaDocentes
         Dim report As New rptUpdateDocente
         report.IdDocente = IdDocente
         Dim reportTool As New ReportPrintTool(report)
-        reportTool.ShowPreviewDialog()
+        reportTool.ShowRibbonPreviewDialog()
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
         ProgressPanel1.Visible = False
+        Activate()
+        Enabled = True
+    End Sub
+
+    Private Sub BtnBuscar_Click_1(sender As Object, e As EventArgs) Handles BtnBuscar.Click
+        If TxtBusqueda.Text.Trim <> Nothing Then
+            Dim listaBusqueda As New List(Of Docente)
+            listaBusqueda.Clear()
+            listaBusqueda = objDocente.Buscar(TxtBusqueda.Text.Trim)
+            TxtBusqueda.Text = String.Empty
+            If listaBusqueda.Count > 0 Then
+                DgvDocentes.DataSource = Nothing
+                DgvDocentes.DataSource = listaBusqueda
+                ConfigurarGrid()
+            Else
+                MessageBox.Show("No hay registro para la busqueda" + vbNewLine + "Se recargaran todos los datos", "Busqueda", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                TxtBusqueda.Text = String.Empty
+                CargarDocentes()
+            End If
+        Else
+            CargarDocentes()
+        End If
     End Sub
 End Class

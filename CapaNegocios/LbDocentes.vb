@@ -24,4 +24,8 @@ Public Class LbDocentes
         Return objDocentes.Eliminar(Id)
     End Function
 
+    Public Function Buscar(busqueda As String) As List(Of Docente)
+        Return objDocentes.Buscar(busqueda)
+    End Function
+
 End Class

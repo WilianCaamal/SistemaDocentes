@@ -12,6 +12,7 @@ Public Class DalDocentes
     ''' <returns>List Type Docente</returns>
     Public Function ListarDocentes() As List(Of Docente)
         Sql.Clear()
+        ListaDocentes.Clear()
         Sql.Append("SELECT * FROM DOCENTES ORDER BY NOMBRES")
         Using conexion As New FbConnection
             conexion.ConnectionString = My.Settings.cadenaConexion.ToString
@@ -29,7 +30,7 @@ Public Class DalDocentes
                         .IdDocente = dr.GetInt32(0),
                         .Nombres = dr.GetString(1),
                         .Apellidos = dr.GetString(2),
-                        .Perfil = dr.GetString(3),
+                        .Perfil = dr.GetString(14),
                         .FechaNacimiento = dr.GetDateTime(4)
                     }
                     ListaDocentes.Add(objDocente)
@@ -334,4 +335,44 @@ Public Class DalDocentes
         End Using
     End Function
 
+    ''' <summary>
+    ''' Busca los docentes por medio de nombres y apellidos
+    ''' </summary>
+    ''' <param name="busqueda">String</param>
+    ''' <returns>List Type Docente</returns>
+    Public Function Buscar(busqueda As String) As List(Of Docente)
+        Sql.Clear()
+        ListaDocentes.Clear()
+        Sql.Append("SELECT * FROM DOCENTES WHERE NOMBRES ||' '|| APELLIDOS LIKE '%' || @BUSQUEDA ||'%'")
+        Using conexion As New FbConnection
+            conexion.ConnectionString = My.Settings.cadenaConexion.ToString
+            Try
+                conexion.Open()
+                Dim command As New FbCommand With {
+                    .CommandText = Sql.ToString,
+                    .Connection = conexion
+                }
+                command.Parameters.AddWithValue("@BUSQUEDA", busqueda)
+                Dim dr As FbDataReader
+                dr = command.ExecuteReader()
+
+                While dr.Read
+                    Dim objDocente As New Docente With {
+                        .IdDocente = dr.GetInt32(0),
+                        .Nombres = dr.GetString(1),
+                        .Apellidos = dr.GetString(2),
+                        .Perfil = dr.GetString(14),'14
+                        .FechaNacimiento = dr.GetDateTime(4)
+                    }
+                    ListaDocentes.Add(objDocente)
+                End While
+                dr.Close()
+                conexion.Close()
+                command.Dispose()
+            Catch ex As Exception
+                conexion.Close()
+            End Try
+        End Using
+        Return ListaDocentes
+    End Function
 End Class
