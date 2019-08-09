@@ -8,6 +8,18 @@ Public Class LbCursos
     End Function
 
     Public Function Agregar(objCurso As Curso) As Boolean
+        Dim _error As String = ""
+        If objCurso.Nombre = String.Empty Then
+            _error += " Nombre"
+        End If
+        If objCurso.Institucion = String.Empty Then
+            _error += ", Institución"
+        End If
+
+        If _error.Length > 0 Then
+            Throw New Exception("Los siguientes campos no pueden estar vacios: " + vbNewLine + _error.Substring(1))
+        End If
+
         Return objCursos.Agregar(objCurso)
     End Function
 
@@ -16,6 +28,17 @@ Public Class LbCursos
     End Function
 
     Public Function Editar(objCurso As Curso) As Boolean
+        Dim _error As String = ""
+        If objCurso.Nombre = String.Empty Then
+            _error += " Nombre"
+        End If
+        If objCurso.Institucion = String.Empty Then
+            _error += ", Institución"
+        End If
+
+        If _error.Length > 0 Then
+            Throw New Exception("Los siguientes campos no pueden estar vacios: " + vbNewLine + _error.Substring(1))
+        End If
         Return objCursos.Editar(objCurso)
     End Function
 
