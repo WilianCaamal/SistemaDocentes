@@ -44,8 +44,8 @@ Public Class FrmDocente
         TxtPerfil.Enabled = active
         TxtPostgrado.Enabled = active
         TxtIdiomas.Enabled = active
-        CboArea.Enabled = active
-        CboGrado.Enabled = active
+        TxtArea.Enabled = active
+        TxtGrado.Enabled = active
         DtFechaIngreso.Enabled = active
 
         Button1.Enabled = active
@@ -90,8 +90,8 @@ Public Class FrmDocente
             .FechaIngreso = DtFechaIngreso.Value,
             .Perfil = TxtPerfil.Text.Trim,
             .Postgrado = TxtPostgrado.Text.Trim,
-            .Area = CboArea.Text.Trim,
-            .Grado = CboGrado.Text.Trim,
+            .Area = TxtArea.Text.Trim,
+            .Grado = TxtGrado.Text.Trim,
             .Idiomas = TxtIdiomas.Text.Trim
         }
         If (PbFoto.Image IsNot Nothing) Then
@@ -121,23 +121,27 @@ Public Class FrmDocente
     End Sub
 
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
-        If IdDocente = 0 Then
-            Dim respuesta = objDocentes.Agregar(ObtenerDocente())
-            If respuesta Then
-                MessageBox.Show("Se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                DialogResult = DialogResult.Yes
+        Try
+            If IdDocente = 0 Then
+                Dim respuesta = objDocentes.Agregar(ObtenerDocente())
+                If respuesta Then
+                    MessageBox.Show("Se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    DialogResult = DialogResult.Yes
+                Else
+                    MessageBox.Show("No se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
             Else
-                MessageBox.Show("No se agrego el docente", "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Dim respuesta = objDocentes.Editar(ObtenerDocente())
+                If respuesta Then
+                    MessageBox.Show("Se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    DialogResult = DialogResult.Yes
+                Else
+                    MessageBox.Show("No se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
             End If
-        Else
-            Dim respuesta = objDocentes.Editar(ObtenerDocente())
-            If respuesta Then
-                MessageBox.Show("Se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                DialogResult = DialogResult.Yes
-            Else
-                MessageBox.Show("No se edito el docente", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-        End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Agregar Docente", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
     End Sub
 
     Private Sub CboEstado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboEstado.SelectedIndexChanged
@@ -178,8 +182,8 @@ Public Class FrmDocente
         DtFechaIngreso.Value = objDocente.FechaIngreso
         TxtPerfil.Text = objDocente.Perfil
         TxtPostgrado.Text = objDocente.Postgrado
-        CboArea.Text = objDocente.Area
-        CboGrado.Text = objDocente.Grado
+        TxtArea.Text = objDocente.Area
+        TxtGrado.Text = objDocente.Grado
         TxtIdiomas.Text = objDocente.Idiomas
 
         If objDocente.Foto IsNot Nothing Then
