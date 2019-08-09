@@ -25,6 +25,7 @@ Partial Class FrmDocente
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.PbFoto = New System.Windows.Forms.PictureBox()
         Me.TxtEmail = New System.Windows.Forms.TextBox()
         Me.TxtTelefono = New System.Windows.Forms.TextBox()
         Me.TxtCp = New System.Windows.Forms.TextBox()
@@ -51,9 +52,7 @@ Partial Class FrmDocente
         Me.TxtIdiomas = New System.Windows.Forms.TextBox()
         Me.DtFechaIngreso = New System.Windows.Forms.DateTimePicker()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.CboGrado = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.CboArea = New System.Windows.Forms.ComboBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TxtPostgrado = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -67,11 +66,12 @@ Partial Class FrmDocente
         Me.BtnEliminar = New System.Windows.Forms.Button()
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
-        Me.PbFoto = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TxtArea = New System.Windows.Forms.TextBox()
+        Me.TxtGrado = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -127,6 +127,17 @@ Partial Class FrmDocente
         Me.Label13.Size = New System.Drawing.Size(56, 13)
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "Fotografía"
+        '
+        'PbFoto
+        '
+        Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PbFoto.Location = New System.Drawing.Point(552, 32)
+        Me.PbFoto.Name = "PbFoto"
+        Me.PbFoto.Size = New System.Drawing.Size(113, 123)
+        Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PbFoto.TabIndex = 22
+        Me.PbFoto.TabStop = False
         '
         'TxtEmail
         '
@@ -325,12 +336,12 @@ Partial Class FrmDocente
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.TxtGrado)
+        Me.GroupBox2.Controls.Add(Me.TxtArea)
         Me.GroupBox2.Controls.Add(Me.TxtIdiomas)
         Me.GroupBox2.Controls.Add(Me.DtFechaIngreso)
         Me.GroupBox2.Controls.Add(Me.Label20)
-        Me.GroupBox2.Controls.Add(Me.CboGrado)
         Me.GroupBox2.Controls.Add(Me.Label19)
-        Me.GroupBox2.Controls.Add(Me.CboArea)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.TxtPostgrado)
         Me.GroupBox2.Controls.Add(Me.Label17)
@@ -348,6 +359,7 @@ Partial Class FrmDocente
         '
         'TxtIdiomas
         '
+        Me.TxtIdiomas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtIdiomas.Location = New System.Drawing.Point(435, 74)
         Me.TxtIdiomas.Name = "TxtIdiomas"
         Me.TxtIdiomas.Size = New System.Drawing.Size(246, 20)
@@ -372,14 +384,6 @@ Partial Class FrmDocente
         Me.Label20.TabIndex = 24
         Me.Label20.Text = "Idiomas que domina:"
         '
-        'CboGrado
-        '
-        Me.CboGrado.FormattingEnabled = True
-        Me.CboGrado.Location = New System.Drawing.Point(435, 46)
-        Me.CboGrado.Name = "CboGrado"
-        Me.CboGrado.Size = New System.Drawing.Size(246, 21)
-        Me.CboGrado.TabIndex = 23
-        '
         'Label19
         '
         Me.Label19.AutoSize = True
@@ -388,14 +392,6 @@ Partial Class FrmDocente
         Me.Label19.Size = New System.Drawing.Size(94, 13)
         Me.Label19.TabIndex = 22
         Me.Label19.Text = "Grado academico:"
-        '
-        'CboArea
-        '
-        Me.CboArea.FormattingEnabled = True
-        Me.CboArea.Location = New System.Drawing.Point(435, 19)
-        Me.CboArea.Name = "CboArea"
-        Me.CboArea.Size = New System.Drawing.Size(246, 21)
-        Me.CboArea.TabIndex = 21
         '
         'Label18
         '
@@ -424,6 +420,7 @@ Partial Class FrmDocente
         '
         'TxtPerfil
         '
+        Me.TxtPerfil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtPerfil.Location = New System.Drawing.Point(104, 71)
         Me.TxtPerfil.Name = "TxtPerfil"
         Me.TxtPerfil.Size = New System.Drawing.Size(209, 20)
@@ -517,17 +514,6 @@ Partial Class FrmDocente
         Me.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnGuardar.UseVisualStyleBackColor = True
         '
-        'PbFoto
-        '
-        Me.PbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PbFoto.Location = New System.Drawing.Point(552, 32)
-        Me.PbFoto.Name = "PbFoto"
-        Me.PbFoto.Size = New System.Drawing.Size(113, 123)
-        Me.PbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PbFoto.TabIndex = 22
-        Me.PbFoto.TabStop = False
-        '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -539,6 +525,20 @@ Partial Class FrmDocente
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Docente"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TxtArea
+        '
+        Me.TxtArea.Location = New System.Drawing.Point(435, 15)
+        Me.TxtArea.Name = "TxtArea"
+        Me.TxtArea.Size = New System.Drawing.Size(246, 20)
+        Me.TxtArea.TabIndex = 21
+        '
+        'TxtGrado
+        '
+        Me.TxtGrado.Location = New System.Drawing.Point(435, 45)
+        Me.TxtGrado.Name = "TxtGrado"
+        Me.TxtGrado.Size = New System.Drawing.Size(246, 20)
+        Me.TxtGrado.TabIndex = 23
         '
         'FrmDocente
         '
@@ -559,9 +559,9 @@ Partial Class FrmDocente
         Me.Text = "Formulario docente"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.PbFoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -600,9 +600,7 @@ Partial Class FrmDocente
     Friend WithEvents TxtIdiomas As TextBox
     Friend WithEvents DtFechaIngreso As DateTimePicker
     Friend WithEvents Label20 As Label
-    Friend WithEvents CboGrado As ComboBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents CboArea As ComboBox
     Friend WithEvents Label18 As Label
     Friend WithEvents TxtPostgrado As TextBox
     Friend WithEvents Label17 As Label
@@ -613,4 +611,6 @@ Partial Class FrmDocente
     Friend WithEvents Label14 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents OfdFoto As OpenFileDialog
+    Friend WithEvents TxtGrado As TextBox
+    Friend WithEvents TxtArea As TextBox
 End Class
