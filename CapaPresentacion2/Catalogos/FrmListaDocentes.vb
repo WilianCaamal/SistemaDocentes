@@ -149,7 +149,7 @@ Public Class FrmListaDocentes
         Dim report As New rptUpdateDocente
         report.IdDocente = IdDocente
         Dim reportTool As New ReportPrintTool(report)
-        reportTool.ShowRibbonPreviewDialog()
+        reportTool.ShowPreviewDialog()
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
