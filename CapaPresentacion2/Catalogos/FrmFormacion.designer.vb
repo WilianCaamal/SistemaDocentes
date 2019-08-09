@@ -43,6 +43,7 @@ Partial Class FrmFormacion
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.DgvEstudios = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.BtnEvidencia = New System.Windows.Forms.Button()
         Me.BtnEliminarEstudios = New System.Windows.Forms.Button()
         Me.BtnAgregarEstudios = New System.Windows.Forms.Button()
         Me.TxtTiempoDocente = New System.Windows.Forms.TextBox()
@@ -78,6 +79,9 @@ Partial Class FrmFormacion
         Me.BtnEditar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnSalir = New System.Windows.Forms.Button()
+        Me.OfdArchivoCurso = New System.Windows.Forms.OpenFileDialog()
+        Me.OfdArchivoEstudio = New System.Windows.Forms.OpenFileDialog()
+        Me.BtnEvidenciaCurso = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -298,6 +302,7 @@ Partial Class FrmFormacion
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.BtnEvidencia)
         Me.GroupBox2.Controls.Add(Me.BtnEliminarEstudios)
         Me.GroupBox2.Controls.Add(Me.BtnAgregarEstudios)
         Me.GroupBox2.Controls.Add(Me.TxtTiempoDocente)
@@ -323,6 +328,18 @@ Partial Class FrmFormacion
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
         '
+        'BtnEvidencia
+        '
+        Me.BtnEvidencia.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.overview_pages_2_24px
+        Me.BtnEvidencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnEvidencia.Location = New System.Drawing.Point(726, 32)
+        Me.BtnEvidencia.Name = "BtnEvidencia"
+        Me.BtnEvidencia.Size = New System.Drawing.Size(80, 30)
+        Me.BtnEvidencia.TabIndex = 21
+        Me.BtnEvidencia.Text = "Evidencia"
+        Me.BtnEvidencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnEvidencia.UseVisualStyleBackColor = True
+        '
         'BtnEliminarEstudios
         '
         Me.BtnEliminarEstudios.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.delete_24px
@@ -339,7 +356,7 @@ Partial Class FrmFormacion
         '
         Me.BtnAgregarEstudios.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.save_24px
         Me.BtnAgregarEstudios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.BtnAgregarEstudios.Location = New System.Drawing.Point(726, 31)
+        Me.BtnAgregarEstudios.Location = New System.Drawing.Point(640, 31)
         Me.BtnAgregarEstudios.Name = "BtnAgregarEstudios"
         Me.BtnAgregarEstudios.Size = New System.Drawing.Size(80, 30)
         Me.BtnAgregarEstudios.TabIndex = 19
@@ -396,11 +413,11 @@ Partial Class FrmFormacion
         'DtFechaEstudio
         '
         Me.DtFechaEstudio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DtFechaEstudio.Location = New System.Drawing.Point(499, 42)
+        Me.DtFechaEstudio.Location = New System.Drawing.Point(451, 42)
         Me.DtFechaEstudio.MaxDate = New Date(2030, 12, 31, 0, 0, 0, 0)
         Me.DtFechaEstudio.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DtFechaEstudio.Name = "DtFechaEstudio"
-        Me.DtFechaEstudio.Size = New System.Drawing.Size(200, 20)
+        Me.DtFechaEstudio.Size = New System.Drawing.Size(155, 20)
         Me.DtFechaEstudio.TabIndex = 9
         '
         'TxtEstudio
@@ -408,7 +425,7 @@ Partial Class FrmFormacion
         Me.TxtEstudio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtEstudio.Location = New System.Drawing.Point(11, 42)
         Me.TxtEstudio.Name = "TxtEstudio"
-        Me.TxtEstudio.Size = New System.Drawing.Size(477, 20)
+        Me.TxtEstudio.Size = New System.Drawing.Size(434, 20)
         Me.TxtEstudio.TabIndex = 8
         '
         'Label17
@@ -464,7 +481,7 @@ Partial Class FrmFormacion
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(496, 21)
+        Me.Label12.Location = New System.Drawing.Point(452, 21)
         Me.Label12.Margin = New System.Windows.Forms.Padding(5)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(40, 13)
@@ -523,6 +540,7 @@ Partial Class FrmFormacion
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.BtnEvidenciaCurso)
         Me.GroupBox3.Controls.Add(Me.BtnEliminarCurso)
         Me.GroupBox3.Controls.Add(Me.DtFechaCurso)
         Me.GroupBox3.Controls.Add(Me.BtnAgregarCurso)
@@ -683,6 +701,18 @@ Partial Class FrmFormacion
         Me.BtnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BtnSalir.UseVisualStyleBackColor = True
         '
+        'BtnEvidenciaCurso
+        '
+        Me.BtnEvidenciaCurso.Image = Global.CapaPresentacion2.My.Resources.ResourceImages24px.overview_pages_2_24px
+        Me.BtnEvidenciaCurso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.BtnEvidenciaCurso.Location = New System.Drawing.Point(726, 68)
+        Me.BtnEvidenciaCurso.Name = "BtnEvidenciaCurso"
+        Me.BtnEvidenciaCurso.Size = New System.Drawing.Size(80, 30)
+        Me.BtnEvidenciaCurso.TabIndex = 22
+        Me.BtnEvidenciaCurso.Text = "Evidencia"
+        Me.BtnEvidenciaCurso.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BtnEvidenciaCurso.UseVisualStyleBackColor = True
+        '
         'FrmFormacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -769,4 +799,8 @@ Partial Class FrmFormacion
     Friend WithEvents BtnNuevo As Button
     Friend WithEvents BtnSalir As Button
     Friend WithEvents DtFechaCurso As DateTimePicker
+    Friend WithEvents BtnEvidencia As Button
+    Friend WithEvents OfdArchivoCurso As OpenFileDialog
+    Friend WithEvents OfdArchivoEstudio As OpenFileDialog
+    Friend WithEvents BtnEvidenciaCurso As Button
 End Class

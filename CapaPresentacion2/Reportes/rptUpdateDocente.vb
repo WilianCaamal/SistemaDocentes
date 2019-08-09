@@ -19,7 +19,7 @@ Public Class rptUpdateDocente
         Nombres.Value = objDocente.Nombres
         Apellidos.Value = objDocente.Apellidos
         Genero.Value = objDocente.Genero
-        FechaNacimiento.Value = objDocente.FechaNacimiento.ToShortDateString
+        FechaNacimiento.Value = objDocente.FechaNacimiento.ToString("d")
         Curp.Value = objDocente.Curp
         Direccion.Value = objDocente.Direccion
         Ciudad.Value = objMunicipio.Nombre
@@ -27,7 +27,7 @@ Public Class rptUpdateDocente
         Estado.Value = objEstado.Nombre
         Telefono.Value = objDocente.Telefono
         ClavePlaza.Value = objDocente.Plaza
-        FechaIngreso.Value = objDocente.FechaIngreso.ToShortDateString
+        FechaIngreso.Value = objDocente.FechaIngreso.ToString("d")
         Perfil.Value = objDocente.Perfil
         Postgrado.Value = objDocente.Postgrado
         Ciudad.Value = objMunicipio.Nombre

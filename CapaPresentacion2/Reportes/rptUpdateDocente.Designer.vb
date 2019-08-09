@@ -242,7 +242,6 @@ Partial Public Class rptUpdateDocente
         '
         Me.FechaIngreso.Description = "Fecha de ingreso del docente"
         Me.FechaIngreso.Name = "FechaIngreso"
-        Me.FechaIngreso.Type = GetType(Date)
         Me.FechaIngreso.Visible = False
         '
         'XrLabel16
@@ -413,7 +412,6 @@ Partial Public Class rptUpdateDocente
         '
         Me.FechaNacimiento.Description = "Fecha de nacimiento del docente"
         Me.FechaNacimiento.Name = "FechaNacimiento"
-        Me.FechaNacimiento.Type = GetType(Date)
         Me.FechaNacimiento.Visible = False
         '
         'XrLabel7
