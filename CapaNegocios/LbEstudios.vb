@@ -7,6 +7,21 @@ Public Class LbEstudios
     End Function
 
     Public Function Agregar(objEstudio As Estudio) As Boolean
+        Dim _error As String = ""
+        If objEstudio.Nombre = String.Empty Then
+            _error += " Nombres"
+        End If
+        If objEstudio.ExpDocente = String.Empty Then
+            _error += ", Experiencia docente"
+        End If
+        If objEstudio.ExpProfesional = String.Empty Then
+            _error += ", Experiencia Profesional"
+        End If
+
+        If _error.Length > 0 Then
+            Throw New Exception("Los siguientes campos no pueden estar vacios: " + vbNewLine + _error.Substring(1))
+        End If
+
         Return objEstudios.Agregar(objEstudio)
     End Function
 
@@ -15,6 +30,20 @@ Public Class LbEstudios
     End Function
 
     Public Function Editar(objEstudio As Estudio) As Boolean
+        Dim _error As String = ""
+        If objEstudio.Nombre = String.Empty Then
+            _error += " Nombres"
+        End If
+        If objEstudio.ExpDocente = String.Empty Then
+            _error += ", Experiencia docente"
+        End If
+        If objEstudio.ExpProfesional = String.Empty Then
+            _error += ", Experiencia Profesional"
+        End If
+
+        If _error.Length > 0 Then
+            Throw New Exception("Los siguientes campos no pueden estar vacios: " + vbNewLine + _error.Substring(1))
+        End If
         Return objEstudios.Editar(objEstudio)
     End Function
 
