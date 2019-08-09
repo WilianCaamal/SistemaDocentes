@@ -37,6 +37,7 @@ Public Class FrmFormacion
         BtnAgregarEstudios.Enabled = activar
         BtnEliminarEstudios.Enabled = Not activar
         BtnEditar.Enabled = Not activar
+        BtnEvidencia.Enabled = activar
     End Sub
 
     Private Sub ActivarControlesCursos(activar As Boolean)
@@ -47,6 +48,7 @@ Public Class FrmFormacion
         BtnAgregarCurso.Enabled = activar
         BtnEliminarCurso.Enabled = Not activar
         BtnEditar.Enabled = Not activar
+        BtnEvidenciaCurso.Enabled = activar
     End Sub
 
     Private Sub LimpiarCamposDocente()
@@ -240,6 +242,7 @@ Public Class FrmFormacion
                     ListarEstudios()
                 End If
             End If
+            GuardarArchivoEstudio()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Agregar Estudio", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -286,6 +289,7 @@ Public Class FrmFormacion
                     ListarCursos()
                 End If
             End If
+            GuardarArchivoCurso()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Agregar Curso", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -359,5 +363,66 @@ Public Class FrmFormacion
             MessageBox.Show("Se ha eliminado el curso", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ListarCursos()
         End If
+    End Sub
+
+    Private Sub BtnEvidencia_Click(sender As Object, e As EventArgs) Handles BtnEvidencia.Click
+        rutaArchivoEstudio = String.Empty
+        OfdArchivoEstudio.ShowDialog()
+        rutaArchivoEstudio = OfdArchivoEstudio.FileName
+        'GuardarArchivoEstudio()
+    End Sub
+
+    Dim rutaRaiz As String
+    Dim rutaEvidencia As String
+    Dim rutaDocente As String
+    Dim rutaCursos As String
+    Dim rutaEstudios As String
+    Dim rutaArchivoCurso As String
+    Dim rutaArchivoEstudio As String
+
+    Private Sub CargarDirectorios()
+        rutaRaiz = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "\SistemaDocente"
+        rutaEvidencia = rutaRaiz + "\Evidencia"
+        rutaDocente = rutaEvidencia + "\" + IdDocente.ToString + "-" + objDocente.Curp
+        rutaCursos = rutaDocente + "\Cursos"
+        rutaEstudios = rutaDocente + "\Estudios"
+    End Sub
+
+    Private Sub GuardarArchivoEstudio()
+        CargarDirectorios()
+        Try
+            If OfdArchivoEstudio.FileName <> Nothing Then
+                Dim archivo = rutaEstudios + "\" + TxtEstudio.Text + rutaArchivoEstudio.Substring(rutaArchivoEstudio.Length - 4)
+                If Not My.Computer.FileSystem.FileExists(archivo) Then
+                    My.Computer.FileSystem.CopyFile(rutaArchivoEstudio, archivo)
+                Else
+                    MessageBox.Show("El archivo ya existe", "Guardar Evidencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Algo salio mal al guardar la evidencia", "Guardar Evidencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
+    End Sub
+
+    Private Sub GuardarArchivoCurso()
+        CargarDirectorios()
+        Try
+            If OfdArchivoCurso.FileName <> Nothing Then
+                Dim archivo = rutaCursos + "\" + TxtCurso.Text + rutaArchivoCurso.Substring(rutaArchivoCurso.Length - 4)
+                If Not My.Computer.FileSystem.FileExists(archivo) Then
+                    My.Computer.FileSystem.CopyFile(rutaArchivoCurso, archivo)
+                Else
+                    MessageBox.Show("El archivo ya existe", "Guardar Evidencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Algo salio mal al guardar la evidencia", "Guardar Evidencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
+    End Sub
+
+    Private Sub BtnEvidenciaCurso_Click(sender As Object, e As EventArgs) Handles BtnEvidenciaCurso.Click
+        rutaArchivoCurso = String.Empty
+        OfdArchivoCurso.ShowDialog()
+        rutaArchivoCurso = OfdArchivoCurso.FileName
     End Sub
 End Class
