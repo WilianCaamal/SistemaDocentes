@@ -102,7 +102,9 @@
     <Compile Include="Catalogos\FrmFormacion.designer.vb">
       <DependentUpon>FrmFormacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\FrmFormacion.vb" />
+    <Compile Include="Catalogos\FrmFormacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Catalogos\FrmListaDocentes.designer.vb">
       <DependentUpon>FrmListaDocentes.vb</DependentUpon>
     </Compile>
